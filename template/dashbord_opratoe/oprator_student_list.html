@@ -1,0 +1,122 @@
+{% extends 'dashbord_opratoe/oprator_base.html' %}
+{% load common_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>دانش آموزان</title>
+</head>
+<body>
+
+{% block content %}
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header border-bottom">
+                <h5 class="card-header-title">لیست کاربران</h5>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="card-body">
+                <div class="container pb-5">
+                    <form class="row">
+
+                        <!-- Input Card -->
+                        <div class="col-md-6 py-1">
+                            <input type="text" class="form-control" placeholder="جستجوی" aria-label="جستجوی ایمیل">
+
+                        </div>
+                        <!-- End Input Card -->
+                        <div class="col-md-5 py-1">
+                            <select class="form-select">
+                                <option value="Relevance" selected="">ارتباط</option>
+                                <option value="mostRecent">اخیرا</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1 py-1">
+                            <button type="button" class="btn btn-primary btn-search"><i class="bi-search"></i></button>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="row">
+                    <!-- Table -->
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">نام</th>
+                                <th scope="col">نام خانوادگی</th>
+                                <th scope="col">شماره موبایل</th>
+                                <th scope="col">سن</th>
+                                <th scope="col">کد ملی</th>
+                                <th scope="col">نوع عضویت</th>
+                                <th scope="col">جزئیات بیشتر</th>
+                            </tr>
+                            </thead>
+                            {% for u,e in zip_student %}
+                                <tbody>
+
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{ u.first_name }}</td>
+                                    <td>{{ u.last_name }}</td>
+                                    <td>{{ u.username }}</td>
+                                    <td>{{ e.age }}</td>
+                                    <td>{{ u.age }}</td>
+                                    <td>{{ e.type|change_title_of_type_field }}</td>
+                                    <td><span class="badge bg-success"><a href="{% url 'dashbord:profile' pk=u.id %}">مشاهده</a></span>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <!-- End Table -->
+
+
+                    <!-- Pagination -->
+                    {% if zip_student.has_other_pages %}
+                        <div class="row pt-5 mt-3">
+                            <nav aria-label="Page navigation py-3">
+                                <ul class="pagination justify-content-center">
+                                    {% if zip_student.has_previous %}
+                                        <li ><a class="page-link" href="?page_number={{ zip_student.previous_page_number }}" tabindex="-1">قبلی</a>
+                                    {% endif %}
+                                    </li>
+                                    {% for page in zip_student.paginator.page_range %}
+                                        {% if zip_student.number == page %}
+                                    <li class="page-item active"><a class="page-link" href="page_number={{ page }}">{{ page }}</a></li>
+                                        {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page_number={{ page }}">{{ page }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if zip_student.has_next %}
+                                        <li class="page-item">
+                                        <a class="page-link" href="?page_number={{ zip_student.next_page_number }}">بعدی</a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    {% endif %}
+                    <!-- End Pagination -->
+
+
+                </div>
+                <!-- End Row -->
+
+            </div>
+            <!-- End Body -->
+        </div>
+        <!-- End Card -->
+    </div>
+{% endblock %}
+
+</body>
+</html>

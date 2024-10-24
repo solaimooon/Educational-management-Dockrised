@@ -1,0 +1,91 @@
+{% extends 'dashbord_opratoe/oprator_base.html' %}
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>کلاس های من</title>
+
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,500,1,0"/>
+    </head>
+    <body>
+
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header border-bottom">
+                <h5 class="card-header-title"> کلاس های من </h5>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="card-body">
+                <div class="row">
+                    {% for klass in klass_object %}
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <!-- Card -->
+                            <div class="card card-bordered shadow-none h-100">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6 col-md mb-3 mb-md-0">
+                                            <p class="card-subtitle mb-0">نام کلاس </p>
+                                            <p class="text-dark fw-semibold">{{ klass.name }}</p>
+                                        </div>
+                                        <!-- End Col -->
+
+                                        <div class="col-6 col-md mb-3 mb-md-0">
+                                            <p class="card-subtitle mb-0">شماره دوره </p>
+                                            <p class="text-dark fw-semibold">{{ klass.course }}</p>
+                                        </div>
+                                        <!-- End Col -->
+
+                                        <div class="col-6 col-md">
+                                            <p class="card-subtitle mb-0">وضعیت</p>
+                                            <p class="text-dark fw-semibold"><span class="material-symbols-outlined">
+toggle_on
+</span></p>
+                                        </div>
+                                        <!-- End Col -->
+
+                                        <div class="col-6 col-md">
+                                            <p class="card-subtitle mb-0"></p>
+
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
+
+                                    <hr>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="d-grid gap-2">
+                                                <a class="btn btn-white btn-sm" href="#">
+                                                    <i class="bi-receipt small me-2"></i>جزئیات کلاس
+                                                </a>
+                                                <a class="btn btn-white btn-sm" href="#">
+                                                    <i class="bi-receipt small me-2"></i>گزارش
+                                                </a>
+                                                <a class="btn btn-primary btn-sm" href="{% url 'score:choose_date' id=klass.pk %}?klass_id={{ klass.id }}">ثبت امتیاز و حضور</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Card -->
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Body -->
+        </div>
+        <!-- End Card -->
+    </div>
+
+    </body>
+    </html>
+{% endblock %}

@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./favicon.ico">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{% static 'sign_up _ log in _dashbord/assets/css/vendor.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'sign_up _ log in _dashbord/assets/vendor/bootstrap-icons/font/bootstrap-icons.css' %}">
+
+    <!-- CSS Front Template -->
+    <link rel="stylesheet" href="{% static 'sign_up _ log in _dashbord/assets/css/theme.min.css' %}">
+</head>
+<body>
+<!-- ========== HEADER ========== -->
+
+<!-- ========== END HEADER ========== -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <script>swal("ناموفق", "{{ message }}", "error");</script>
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS  %}
+                <script>swal("موفق", "{{ message }}", "success");</script>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}
+{% block content %}
+{% endblock %}
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-dark">
+    <div class="container pb-1 pb-lg-5">
+        <div class="row content-space-t-2">
+            <div class="col-lg-3 mb-7 mb-lg-0">
+                <!-- Logo -->
+                <div class="mb-5">
+                    <a class="navbar-brand" href="#" aria-label="Space">
+                        <img class="navbar-brand-logo"
+                             src="{% static 'website/logo.png' %}"
+                             alt="Image Description">
+                    </a>
+                </div>
+                <!-- End Logo -->
+                <ul class="list-unstyled list-py-1">
+                    <li>
+                    <li><a class="link-sm link-light" href="#"><i class="bi-geo-alt-fill me-1"></i> خیابان حبیب اللهی
+                        میدان حسن حسینی کوچه لطفی حسینیه مسجد امام حسین (ع) </a></li>
+                    </li>
+                </ul>
+
+
+                <!-- List -->
+
+                <!-- End List -->
+
+            </div>
+            <!-- End Col -->
+            <div class="col-sm mb-7 mb-sm-0">
+                <h5 class="text-white mb-3">نظامت واحد بزرگسالان<br>(آقای ساعدی)</h5>
+                <!-- List -->
+                <ul class="list-unstyled list-py-1 mb-0">
+                    <li><a class="link-sm link-light" href="tel:0912-396-5798"><i
+                            class="bi-telephone-inbound-fill me-1"></i>
+                        + (98) 396-5798</a></li>
+                </ul>
+                <!-- End List -->
+            </div>
+            <div class="col-sm mb-7 mb-sm-0">
+                <h5 class="text-white mb-3">نظامت واحد کوشا<br>(آقای پهلوانی)</h5>
+                <!-- List -->
+                <ul class="list-unstyled list-py-1 mb-0">
+                    <li><a class="link-sm link-light" href="tel:0912-545-3170"><i
+                            class="bi-telephone-inbound-fill me-1"></i>
+                        + (98) 545-3170</a></li>
+                </ul>
+                <!-- End List -->
+            </div>
+            <!-- End Col -->
+            <div class="col-sm mb-7 mb-sm-0">
+                <h5 class="text-white mb-3">نظامت واحد کوشا<br>(آقای پهلوانی)</h5>
+                <!-- List -->
+                <ul class="list-unstyled list-py-1 mb-0">
+                    <li><a class="link-sm link-light" href="tel:0912-545-3170"><i
+                            class="bi-telephone-inbound-fill me-1"></i>
+                        + (98) 545-3170</a></li>
+                </ul>
+                <!-- End List -->
+            </div>
+            <!-- End Col -->
+            <div class="col-sm mb-7 mb-sm-0">
+                <h5 class="text-white mb-3"> شبکه های اجتماعی</h5>
+                <!-- List -->
+                <ul class="list-unstyled list-py-1 mb-5">
+                    <div class="col-sm-auto">
+                        <!-- Socials -->
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a class="btn btn-soft-light btn-xs btn-icon" href="
+                                https://eitaa.com/vahede_koosha"><img
+                                        src="{% static 'website/img/sosial media icon/2lSfJCPqMllhHI88YFFavvqI7Of.svg' %}"
+                                        alt="Eitaa logo" style="width: 20px; height: 20px;"></img></a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a class="btn btn-soft-light btn-xs btn-icon" href="https://ble.ir/vahede_koosha"><img
+                                        src="{% static 'website/img/sosial media icon/bale.svg' %}" alt="Eitaa logo"
+                                        style="width: 20px; height: 20px;"></img></a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a class="btn btn-soft-light btn-xs btn-icon" href="https://splus.ir/vahede_koosha"><img
+                                        src="{% static 'website/img/sosial media icon/soroosh.svg' %}" alt="Eitaa logo"
+                                        style="width: 20px; height: 20px;"></img></a>
+                            </li>
+                        </ul>
+                        <!-- End Socials -->
+                    </div>
+                </ul>
+                <!-- End List -->
+            </div>
+            <!-- End Col -->
+
+        </div>
+        <!-- End Row -->
+
+        <div class="border-top border-white-10 my-7"></div>
+
+        <!-- Copyright -->
+        <div class="w-md-85 text-lg-center mx-lg-auto">
+            <p class="text-white-50 small">تمامی حقوق برای کانون آموزش معارف اسلامی میراث النبی (ص) محفوظ میباشد. </p>
+            <p class="text-white-50 small">طراحی و کد نویسی توسط خادم القران </p>
+        </div>
+        <!-- End Copyright -->
+    </div>
+</footer>
+<!-- ========== END FOOTER ========== -->
+
+<!-- ========== SECONDARY CONTENTS ========== -->
+
+
+<!-- Go To -->
+<a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+</a>
+<!-- ========== END SECONDARY CONTENTS ========== -->
+</body>
+
+
+<!-- JS Implementing Plugins -->
+<script src="{% static 'sign_up _ log in _dashbord/assets/js/vendor.min.js' %}"></script>
+
+<!-- JS Front -->
+<script src="{% static 'sign_up _ log in _dashbord/assets/js/theme.min.js' %}"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+    (function () {
+        // INITIALIZATION OF HEADER
+        // =======================================================
+        new HSHeader('#header').init()
+
+
+        // INITIALIZATION OF MEGA MENU
+        // =======================================================
+        new HSMegaMenu('.js-mega-menu', {
+            desktop: {
+                position: 'left'
+            }
+        })
+
+
+        // INITIALIZATION OF SHOW ANIMATIONS
+        // =======================================================
+        new HSShowAnimation('.js-animation-link')
+
+
+        // INITIALIZATION OF BOOTSTRAP VALIDATION
+        // =======================================================
+        HSBsValidation.init('.js-validate', {
+            onSubmit: data => {
+                data.event.preventDefault()
+                alert('Submited')
+            }
+        })
+
+
+        // INITIALIZATION OF BOOTSTRAP DROPDOWN
+        // =======================================================
+        HSBsDropdown.init()
+
+
+        // INITIALIZATION OF GO TO
+        // =======================================================
+        new HSGoTo('.js-go-to')
+
+
+        // INITIALIZATION OF TOGGLE PASSWORD
+        // =======================================================
+        new HSTogglePassword('.js-toggle-password')
+    })()
+</script>
+</html>

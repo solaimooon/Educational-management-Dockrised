@@ -1,0 +1,101 @@
+{% extends 'dashbord_opratoe/oprator_base.html' %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <style>
+            .hidden {
+                display: none;
+            }
+
+            .toggle-icon {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header border-bottom">
+                <h5 class="card-header-title">امتیازات</h5>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="col-lg-12">
+                <div class="card-body">
+                    <!-- sabte hozore body -->
+
+                    {% for key,valule in dict_course_sumeds.items %}
+
+                        <!-- اضافه کردن یک شناسه منحصر به فرد برای هر کارت -->
+                        <div class="card mb-3">
+                            <div class="card-header border-bottom d-flex justify-content-between align-items-center">
+                                <h4 class="card-header-title"> دوره: {{ key }} </h4>
+                                <!-- Open/Close Icons -->
+                                <i class="fas fa-chevron-down toggle-icon"
+                                   id="presenceIcon_{{ forloop.counter }}"
+                                   onclick="toggleForm('presenceForm_{{ forloop.counter }}', 'presenceIcon_{{ forloop.counter }}')"></i>
+                            </div>
+                            <!-- Start Form -->
+                            <div id="presenceForm_{{ forloop.counter }}" class="hidden">
+                                <!-- emtiyazat sabt shode -->
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">ردیف</th>
+                                            <th scope="col">نام</th>
+                                            <th scope="col">نام خانوادگی</th>
+                                            <th scope="col">کلاس</th>
+                                            <th scope="col">معلم</th>
+                                            <th scope="col">امتیاز</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for score_user in valule %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ score_user.enroll.student_id.first_name }}</td>
+                                                <td>{{ score_user.enroll.student_id.last_name }}</td>
+                                                <td>{{ score_user.enroll.klass_id.name }}</td>
+                                                <td>{{ score_user.enroll.klass_id.teacher.get_full_name }}</td>
+                                                <td>{{ score_user.SUM }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End Form -->
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(formId, iconId) {
+            var form = document.getElementById(formId);
+            var icon = document.getElementById(iconId);
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                form.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
+    </body>
+    </html>
+{% endblock %}

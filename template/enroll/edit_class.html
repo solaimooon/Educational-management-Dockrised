@@ -1,0 +1,111 @@
+{% extends 'dashbord_opratoe/oprator_base.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    </head>
+    <body>
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header border-bottom">
+                <h5 class="card-header-title"> ویرایش کلاس </h5>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="card-body">
+                <div class="row">
+                    <form method="post"
+                          action="{% url 'enroll:edit_class_detail' id=form_edit_class_object.instance.id %}">
+                        {% csrf_token %}
+                        <div class="row d-flex ">
+                            <div class="col-md-12 mb-3">
+                                <label for="validationValidInput1">نام کلاس </label>
+                                {{ form_edit_class_object.name|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationValidInput1">نام معلم</label>
+                                {{ form_edit_class_object.teacher|as_crispy_field }}
+
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="validationValidInput1">سطح</label>
+                                {{ form_edit_class_object.level|as_crispy_field }}
+
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="validationValidInput1">شماره دوره</label>
+                                {{ form_edit_class_object.course|as_crispy_field }}
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="validationValidSelect1"> تاریخ اولین جلسه </label>
+                                {{ form_edit_class_object.start_date|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationValidSelect1">ساعت شروع کلاس</label>
+                                {{ form_edit_class_object.start_time|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationValidSelect1"> تاریخ آخرین جلسه </label>
+                                {{ form_edit_class_object.end_data|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationValidSelect1">ساعت پایان کلاس</label>
+                                {{ form_edit_class_object.end_time|as_crispy_field }}
+                            </div>
+                            <!-- dual list box -->
+                            <div class="col-md-6 mb-3">
+                                <label for="validationValidSelect1">دانش آموزان</label>
+                                {{ form_edit_class_object.student|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="card-footer pt-0">
+                            <div class="d-flex justify-content-end gap-3">
+                                <button class="btn btn-primary" type="submit">ذخیره تغییرات</button>
+                            </div>
+                        </div>
+                    </form>
+                    <button id="deleteButton" class="btn btn-danger" onclick="deleteData()">حذف </button>
+                </div>
+                <!-- End Row -->
+
+            </div>
+
+            <!-- End Body -->
+        </div>
+        <!-- End Card -->
+    </div>
+    <script>
+        function deleteData() {
+    fetch('{% url "enroll:edit_class_detail" id=form_edit_class_object.instance.id %}', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        }
+    }).then(response => {
+        if (response.ok) {
+            // ریدایرکت به صفحه مورد نظر پس از موفقیت‌آمیز بودن حذف
+            window.location.href = "{% url 'enroll:edit_class' %}";
+        } else {
+            alert('حذف موفقیت آمیز نبود، دوباره تلاش کنید.');
+        }
+    }).catch(error => {
+        console.error('خطا:', error);
+    });
+}
+
+    </script>
+    </body>
+    </html>
+{% endblock %}

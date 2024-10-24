@@ -1,0 +1,837 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title -->
+    <title></title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'sign_up _ log in _dashbord/favicon.ico' %}">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{% static 'sign_up _ log in _dashbord/assets/css/vendor.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'sign_up _ log in _dashbord/assets/vendor/bootstrap-icons/font/bootstrap-icons.css' %}">
+
+    <!-- CSS Front Template -->
+    <link rel="stylesheet" href="{% static 'sign_up _ log in _dashbord/assets/css/theme.min.css' %}">
+    <style>
+        .form-check-input {
+            margin-right: 0.5rem;
+        }
+
+        .form-check-label {
+            margin-left: 0.5rem;
+        }
+    </style>
+    <style class="fslightbox-styles">.fslightbox-absoluted {
+        position: absolute;
+        top: 0;
+        left: 0
+    }
+
+    .fslightbox-fade-in {
+        animation: fslightbox-fade-in .3s cubic-bezier(0, 0, .7, 1)
+    }
+
+    .fslightbox-fade-out {
+        animation: fslightbox-fade-out .3s ease
+    }
+
+    .fslightbox-fade-in-strong {
+        animation: fslightbox-fade-in-strong .3s cubic-bezier(0, 0, .7, 1)
+    }
+
+    .fslightbox-fade-out-strong {
+        animation: fslightbox-fade-out-strong .3s ease
+    }
+
+    @keyframes fslightbox-fade-in {
+        from {
+            opacity: .65
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes fslightbox-fade-out {
+        from {
+            opacity: .35
+        }
+        to {
+            opacity: 0
+        }
+    }
+
+    @keyframes fslightbox-fade-in-strong {
+        from {
+            opacity: .3
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes fslightbox-fade-out-strong {
+        from {
+            opacity: 1
+        }
+        to {
+            opacity: 0
+        }
+    }
+
+    .fslightbox-cursor-grabbing {
+        cursor: grabbing
+    }
+
+    .fslightbox-full-dimension {
+        width: 100%;
+        height: 100%
+    }
+
+    .fslightbox-open {
+        overflow: hidden;
+        height: 100%
+    }
+
+    .fslightbox-flex-centered {
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .fslightbox-opacity-0 {
+        opacity: 0 !important
+    }
+
+    .fslightbox-opacity-1 {
+        opacity: 1 !important
+    }
+
+    .fslightbox-scrollbarfix {
+        padding-right: 17px
+    }
+
+    .fslightbox-transform-transition {
+        transition: transform .3s
+    }
+
+    .fslightbox-container {
+        font-family: Arial, sans-serif;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: linear-gradient(rgba(30, 30, 30, .9), #000 1810%);
+        touch-action: pinch-zoom;
+        z-index: 1000000000;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent
+    }
+
+    .fslightbox-container * {
+        box-sizing: border-box
+    }
+
+    .fslightbox-svg-path {
+        transition: fill .15s ease;
+        fill: #ddd
+    }
+
+    .fslightbox-nav {
+        height: 45px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0
+    }
+
+    .fslightbox-slide-number-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 100%;
+        font-size: 15px;
+        color: #d7d7d7;
+        z-index: 0;
+        max-width: 55px;
+        text-align: left
+    }
+
+    .fslightbox-slide-number-container .fslightbox-flex-centered {
+        height: 100%
+    }
+
+    .fslightbox-slash {
+        display: block;
+        margin: 0 5px;
+        width: 1px;
+        height: 12px;
+        transform: rotate(15deg);
+        background: #fff
+    }
+
+    .fslightbox-toolbar {
+        position: absolute;
+        z-index: 3;
+        right: 0;
+        top: 0;
+        height: 100%;
+        display: flex;
+        background: rgba(35, 35, 35, .65)
+    }
+
+    .fslightbox-toolbar-button {
+        height: 100%;
+        width: 45px;
+        cursor: pointer
+    }
+
+    .fslightbox-toolbar-button:hover .fslightbox-svg-path {
+        fill: #fff
+    }
+
+    .fslightbox-slide-btn-container {
+        display: flex;
+        align-items: center;
+        padding: 12px 12px 12px 6px;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        z-index: 3;
+        transform: translateY(-50%)
+    }
+
+    @media (min-width: 476px) {
+        .fslightbox-slide-btn-container {
+            padding: 22px 22px 22px 6px
+        }
+    }
+
+    @media (min-width: 768px) {
+        .fslightbox-slide-btn-container {
+            padding: 30px 30px 30px 6px
+        }
+    }
+
+    .fslightbox-slide-btn-container:hover .fslightbox-svg-path {
+        fill: #f1f1f1
+    }
+
+    .fslightbox-slide-btn {
+        padding: 9px;
+        font-size: 26px;
+        background: rgba(35, 35, 35, .65)
+    }
+
+    @media (min-width: 768px) {
+        .fslightbox-slide-btn {
+            padding: 10px
+        }
+    }
+
+    @media (min-width: 1600px) {
+        .fslightbox-slide-btn {
+            padding: 11px
+        }
+    }
+
+    .fslightbox-slide-btn-container-previous {
+        left: 0
+    }
+
+    @media (max-width: 475.99px) {
+        .fslightbox-slide-btn-container-previous {
+            padding-left: 3px
+        }
+    }
+
+    .fslightbox-slide-btn-container-next {
+        right: 0;
+        padding-left: 12px;
+        padding-right: 3px
+    }
+
+    @media (min-width: 476px) {
+        .fslightbox-slide-btn-container-next {
+            padding-left: 22px
+        }
+    }
+
+    @media (min-width: 768px) {
+        .fslightbox-slide-btn-container-next {
+            padding-left: 30px
+        }
+    }
+
+    @media (min-width: 476px) {
+        .fslightbox-slide-btn-container-next {
+            padding-right: 6px
+        }
+    }
+
+    .fslightbox-down-event-detector {
+        position: absolute;
+        z-index: 1
+    }
+
+    .fslightbox-slide-swiping-hoverer {
+        z-index: 4
+    }
+
+    .fslightbox-invalid-file-wrapper {
+        font-size: 22px;
+        color: #eaebeb;
+        margin: auto
+    }
+
+    .fslightbox-video {
+        object-fit: cover
+    }
+
+    .fslightbox-youtube-iframe {
+        border: 0
+    }
+
+    .fslightbox-loader {
+        display: block;
+        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 67px;
+        height: 67px
+    }
+
+    .fslightbox-loader div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 54px;
+        height: 54px;
+        margin: 6px;
+        border: 5px solid;
+        border-color: #999 transparent transparent transparent;
+        border-radius: 50%;
+        animation: fslightbox-loader 1.2s cubic-bezier(.5, 0, .5, 1) infinite
+    }
+
+    .fslightbox-loader div:nth-child(1) {
+        animation-delay: -.45s
+    }
+
+    .fslightbox-loader div:nth-child(2) {
+        animation-delay: -.3s
+    }
+
+    .fslightbox-loader div:nth-child(3) {
+        animation-delay: -.15s
+    }
+
+    @keyframes fslightbox-loader {
+        0% {
+            transform: rotate(0)
+        }
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+
+    .fslightbox-source {
+        position: relative;
+        z-index: 2;
+        opacity: 0
+    }</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js">
+    </script>
+
+</head>
+
+<body>
+<!-- ========== MAIN CONTENT ========== -->
+<main id="content" role="main" class="bg-light">
+    <!-- Breadcrumb -->
+    <div class="navbar-dark bg-dark" style="
+            background-image: url({% static 'sign_up _ log in _dashbord/assets/svg/components/wave-pattern-light.svg' %});
+            ">
+        <div class="container content-space-1 content-space-b-lg-3">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="d-none d-lg-block">
+                        <h1 class="h2 text-white">داشبورد</h1>
+                    </div>
+
+                    <!-- Breadcrumb -->
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-light mb-0">
+                            <li class="breadcrumb-item">حساب</li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                داشبورد ادمین
+                            </li>
+                        </ol>
+                    </nav>
+                    <!-- End Breadcrumb -->
+                </div>
+                <!-- End Col -->
+
+                <div class="col-auto">
+                    <!-- Responsive Toggle Button -->
+                    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#sidebarNav" aria-controls="sidebarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+              <span class="navbar-toggler-default">
+                <i class="bi-list"></i>
+              </span>
+                        <span class="navbar-toggler-toggled">
+                <i class="bi-x"></i>
+              </span>
+                    </button>
+                    <!-- End Responsive Toggle Button -->
+                </div>
+                <!-- End Col -->
+                <div class="col-auto">
+                    <div class="d-none d-lg-block">
+                        <a class="btn btn-soft-light btn-sm" href="{% url "athentication:log_out"%}">خروج</a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Row -->
+        </div>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Content Section -->
+    <div class="container content-space-1 content-space-t-lg-0 content-space-b-lg-2 mt-lg-n10">
+        <div class="row">
+            <div class="col-lg-3">
+                <!-- Navbar -->
+                <div class="navbar-expand-lg navbar-light">
+                    <div id="sidebarNav" class="collapse navbar-collapse navbar-vertical">
+                        <!-- Card -->
+                        <div class="card flex-grow-1 mb-5">
+                            <div class="card-body">
+                                <!-- Avatar -->
+                                <div class="d-none d-lg-block text-center mb-5">
+                                    <div class="avatar avatar-xxl avatar-circle mb-3">
+                                        <img class="avatar-img" src="{{ request.session.picture }}"
+                                             alt="Image Description">
+                                    </div>
+
+                                    <h4 class="card-title mb-0">{{ request.user.first_name }}</h4>
+                                    <p class="card-text small">{{ request.user.username }}</p>
+                                </div>
+                                <!-- End Avatar -->
+
+                                <!-- Nav -->
+                                <span class="text-cap">حساب</span>
+
+                                <!-- List -->
+                                <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/dashbord/">
+                                            <i class="bi-person-badge nav-icon"></i>داشبورد
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="{% url 'athentication:update_password' %}">
+                                        <i class="bi-shield-shaded nav-icon"></i> امنیت
+                                      </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'dashbord:profile' pk=request.user.id %}">
+                                            <i class="bi-sliders nav-icon"></i> تنظیمات پروفایل
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- End List -->
+
+                                <span class="text-cap">کلاس</span>
+
+                                <!-- List -->
+                                <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{% url 'enroll:my_class_student' %}">
+                                            <i class="bi-person nav-icon"></i>کلاس های من
+                                        </a>
+                                    </li>
+                                </ul>
+{##}
+{#                                <span class="text-cap">مسابقات</span>#}
+{##}
+{#                                <!-- List -->#}
+{#                                <ul class="nav nav-sm nav-tabs nav-vertical mb-4">#}
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link " href="./admin-account-users.html">#}
+{#                                            <i class="bi-envelope nav-icon"></i>مسابقات من#}
+{#                                        </a>#}
+{#                                    </li><!--#}
+{#                    <li class="nav-item">#}
+{#                      <a class="nav-link " href="./admin-account-newsletter.html">#}
+{#                        <i class="bi-newspaper nav-icon"></i> خبرنامه#}
+{#                      </a>#}
+{#                    </li>#}
+{#                    -->#}
+{#                                </ul>#}
+{#                                <span class="text-cap">نظرسنجی ها </span>#}
+{#                                <ul class="nav nav-sm nav-tabs nav-vertical mb-4">#}
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link " href="./admin-account-users.html">#}
+{#                                            <i class="bi bi-bicycle nav-icon"></i> نظر سنجی های من#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link " href="./admin-account-newsletter.html">#}
+{#                                            <i class="bi-newspaper nav-icon"></i> نظرسنجی#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                </ul>#}
+
+                                <!-- End List -->
+
+                                <div class="d-lg-none">
+                                    <div class="dropdown-divider"></div>
+
+                                    <!-- List -->
+                                    <ul class="nav nav-sm nav-tabs nav-vertical">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'athentication:log_out' %}">
+                                                <i class="bi-box-arrow-right nav-icon"></i> خروج
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!-- End List -->
+                                </div>
+                                <!-- End Nav -->
+                            </div>
+                        </div>
+                        <!-- End Card -->
+                    </div>
+                </div>
+                <!-- End Navbar -->
+            </div>
+            {% block content %}
+            {% endblock %}
+            <!-- End Col -->
+        </div>
+        <!-- End Col -->
+    </div>
+    <!-- End Row -->
+    </div>
+    <!-- End Content Section -->
+</main>
+<!-- ========== END MAIN CONTENT ========== -->
+
+<!-- ========== FOOTER ========== -->
+
+<footer class="bg-dark">
+    <div class="container pb-1 pb-lg-5">
+        <div class="row content-space-t-2">
+            <div class="col-lg-3 mb-7 mb-lg-0">
+                <!-- Logo -->
+                <div class="mb-5">
+                    <a class="navbar-brand" href="#" aria-label="Space">
+                        <img class="navbar-brand-logo"
+                             src="{% static 'website/logo.png' %}"
+                             alt="Image Description">
+                    </a>
+                </div>
+                <!-- End Logo -->
+                <ul class="list-unstyled list-py-1">
+                    <li>
+                    <li><a class="link-sm link-light" href="#"><i class="bi-geo-alt-fill me-1"></i> خیابان حبیب اللهی
+                        میدان حسن حسینی کوچه لطفی حسینیه مسجد امام حسین (ع) </a></li>
+                    </li>
+                </ul>
+
+
+                <!-- List -->
+
+                <!-- End List -->
+
+            </div>
+            <!-- End Col -->
+            <div class="col-sm mb-7 mb-sm-0">
+                <h5 class="text-white mb-3">نظامت واحد بزرگسالان<br>(آقای ساعدی)</h5>
+                <!-- List -->
+                <ul class="list-unstyled list-py-1 mb-0">
+                    <li><a class="link-sm link-light" href="tel:0912-396-5798"><i
+                            class="bi-telephone-inbound-fill me-1"></i>
+                        + (98) 396-5798</a></li>
+                </ul>
+                <!-- End List -->
+            </div>
+            <div class="col-sm mb-7 mb-sm-0">
+                <h5 class="text-white mb-3">نظامت واحد کوشا<br>(آقای پهلوانی)</h5>
+                <!-- List -->
+                <ul class="list-unstyled list-py-1 mb-0">
+                    <li><a class="link-sm link-light" href="tel:0912-545-3170"><i
+                            class="bi-telephone-inbound-fill me-1"></i>
+                        + (98) 545-3170</a></li>
+                </ul>
+                <!-- End List -->
+            </div>
+            <!-- End Col -->
+            <div class="col-sm mb-7 mb-sm-0">
+                <h5 class="text-white mb-3">نظامت واحد کوشا<br>(آقای پهلوانی)</h5>
+                <!-- List -->
+                <ul class="list-unstyled list-py-1 mb-0">
+                    <li><a class="link-sm link-light" href="tel:0912-545-3170"><i
+                            class="bi-telephone-inbound-fill me-1"></i>
+                        + (98) 545-3170</a></li>
+                </ul>
+                <!-- End List -->
+            </div>
+            <!-- End Col -->
+            <div class="col-sm mb-7 mb-sm-0">
+                <h5 class="text-white mb-3"> شبکه های اجتماعی</h5>
+                <!-- List -->
+                <ul class="list-unstyled list-py-1 mb-5">
+                    <div class="col-sm-auto">
+                        <!-- Socials -->
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a class="btn btn-soft-light btn-xs btn-icon" href="
+                                https://eitaa.com/vahede_koosha"><img
+                                        src="{% static 'website/img/sosial media icon/2lSfJCPqMllhHI88YFFavvqI7Of.svg' %}"
+                                        alt="Eitaa logo" style="width: 20px; height: 20px;"></img></a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a class="btn btn-soft-light btn-xs btn-icon" href="https://ble.ir/vahede_koosha"><img
+                                        src="{% static 'website/img/sosial media icon/bale.svg' %}" alt="Eitaa logo"
+                                        style="width: 20px; height: 20px;"></img></a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a class="btn btn-soft-light btn-xs btn-icon" href="https://splus.ir/vahede_koosha"><img
+                                        src="{% static 'website/img/sosial media icon/soroosh.svg' %}" alt="Eitaa logo"
+                                        style="width: 20px; height: 20px;"></img></a>
+                            </li>
+                        </ul>
+                        <!-- End Socials -->
+                    </div>
+                </ul>
+                <!-- End List -->
+            </div>
+            <!-- End Col -->
+
+        </div>
+        <!-- End Row -->
+
+        <div class="border-top border-white-10 my-7"></div>
+
+        <!-- Copyright -->
+        <div class="w-md-85 text-lg-center mx-lg-auto">
+            <p class="text-white-50 small">تمامی حقوق برای کانون آموزش معارف اسلامی میراث النبی (ص) محفوظ میباشد. </p>
+            <p class="text-white-50 small">طراحی و کد نویسی توسط خادم القران </p>
+        </div>
+        <!-- End Copyright -->
+    </div>
+</footer>
+<!-- ========== END FOOTER ========== -->
+
+<!-- ========== SECONDARY CONTENTS ========== -->
+
+
+<!-- Go To -->
+<a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+</a>
+
+<!-- Offcanvas Search -->
+<div class="offcanvas offcanvas-top offcanvas-navbar-search bg-light" tabindex="-1" id="offcanvasNavbarSearch">
+    <div class="offcanvas-body">
+        <div class="container">
+            <div class="w-lg-75 mx-lg-auto">
+                <div class="d-flex justify-content-end mb-3">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                </div>
+
+                <div class="mb-7">
+                    <!-- Form -->
+                    <form>
+                        <!-- Input Card -->
+                        <div class="input-card">
+                            <div class="input-card-form">
+                                <input type="text" class="form-control form-control-lg" placeholder="جستجو محصولات"
+                                       aria-label="جستجو محصولات">
+                            </div>
+                            <button type="button" class="btn btn-primary btn-lg">
+                                جستجو
+                            </button>
+                        </div>
+                        <!-- End Input Card -->
+                    </form>
+                    <!-- End Form -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ALERT -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <script>swal("ناموفق", "{{ message }}", "error");</script>
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS  %}
+                <script>swal("موفق", "{{ message }}", "success");</script>
+            {% else %}
+                <script>swal("", "{{ message }}", "info");</script>
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+<!-- END ALERT -->
+
+<!-- JS Implementing Plugins -->
+<script src="{% static 'sign_up _ log in _dashbord/assets/js/vendor.min.js' %}"></script>
+
+<!-- JS Front -->
+<script src="{% static 'sign_up _ log in _dashbord/assets/js/theme.min.js' %}"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+    (function () {
+        // INITIALIZATION OF HEADER
+        // =======================================================
+        new HSHeader("#header").init();
+
+        // INITIALIZATION OF MEGA MENU
+        // =======================================================
+        new HSMegaMenu(".js-mega-menu", {
+            desktop: {
+                position: "left",
+            },
+        });
+
+        // INITIALIZATION OF SHOW ANIMATIONS
+        // =======================================================
+        new HSShowAnimation(".js-animation-link");
+
+        // INITIALIZATION OF BOOTSTRAP VALIDATION
+        // =======================================================
+        HSBsValidation.init(".js-validate", {
+            onSubmit: (data) => {
+                data.event.preventDefault();
+                alert("Submited");
+            },
+        });
+
+        // INITIALIZATION OF BOOTSTRAP DROPDOWN
+        // =======================================================
+        HSBsDropdown.init();
+
+        // INITIALIZATION OF GO TO
+        // =======================================================
+        new HSGoTo(".js-go-to");
+
+        // INITIALIZATION OF INPUT MASK
+        // =======================================================
+        HSCore.components.HSMask.init(".js-input-mask");
+
+        // INITIALIZATION OF SELECT
+        // =======================================================
+        HSCore.components.HSTomSelect.init(".js-select", {
+            render: {
+                option: function (data, escape) {
+                    return data.optionTemplate;
+                },
+                item: function (data, escape) {
+                    return data.optionTemplate;
+                },
+            },
+        });
+    })();
+</script>
+<!-- Code injected by live-server -->
+<script>
+    // <![CDATA[  <-- For SVG support
+    if ('WebSocket' in window) {
+        (function () {
+            function refreshCSS() {
+                var sheets = [].slice.call(document.getElementsByTagName("link"));
+                var head = document.getElementsByTagName("head")[0];
+                for (var i = 0; i < sheets.length; ++i) {
+                    var elem = sheets[i];
+                    var parent = elem.parentElement || head;
+                    parent.removeChild(elem);
+                    var rel = elem.rel;
+                    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                    }
+                    parent.appendChild(elem);
+                }
+            }
+
+            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+            var address = protocol + window.location.host + window.location.pathname + '/ws';
+            var socket = new WebSocket(address);
+            socket.onmessage = function (msg) {
+                if (msg.data == 'reload') window.location.reload();
+                else if (msg.data == 'refreshcss') refreshCSS();
+            };
+            if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                console.log('Live reload enabled.');
+                sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+            }
+        })();
+    } else {
+        console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+    }
+    // ]]>
+</script>
+
+<link rel="stylesheet" href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}">
+<script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS and Popper.js for tooltips -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+<!-- Initialize tooltips -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    });
+</script>
+</body>
+</html>

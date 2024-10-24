@@ -1,0 +1,137 @@
+{% extends 'dashbord_student/student_base.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="fa">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>گزارش</title>
+        <style>
+            .row {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .blue-card, .green-card, .yelow-card {
+                background-color: #fff7b3;
+                border-radius: 10px;
+                width: 200px;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin: 10px;
+            }
+
+            .blue-card {
+                background-color: #add8e6;
+            }
+
+            .green-card {
+                background-color: #90ee90;
+            }
+
+            .yelow-card {
+                background-color: #fff7b3;
+            }
+
+            .blue-card h1, .green-card h1, .yelow-card h1 {
+                margin: 0;
+                font-size: 2.5rem;
+                color: #333;
+            }
+
+            .blue-card p, .green-card p, .yelow-card p {
+                margin: 5px 0;
+                font-size: 1rem;
+                color: #333;
+            }
+
+            .blue-card button, .green-card button, .yelow-card button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+
+            .blue-card button {
+                background-color: #6a0dad;
+            }
+
+            .blue-card button:hover {
+                background-color: #5c0fa3;
+            }
+
+            .green-card button {
+                background-color: #28a745;
+            }
+
+            .green-card button:hover {
+                background-color: #218838;
+            }
+
+            .yelow-card button {
+                background-color: #f28d12;
+            }
+
+            .yelow-card button:hover {
+                background-color: #d87f00;
+            }
+
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .row {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .blue-card, .green-card, .yelow-card {
+                    width: 100%;
+                    max-width: 300px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+    <div class="col-lg-9">
+        <div class="card">
+            <div class="card-header border-bottom">
+                <h5 class="card-header-title">گزارش عملکرد</h5>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="card blue-card">
+                        <div class="card-content">
+
+                            <h1>{{ sum_emtiyaz_for_all_session.SUM }}</h1>
+                            <p>امتیاز من</p>
+                            <a href="{% url 'score:report_detail_score_chart' enroll=sum_emtiyaz_for_all_session.enroll_id %}"><button class="button"> مشاهده جزئیات </button></a>
+                        </div>
+                    </div>
+                    <div class="card green-card">
+                        <div class="card-content">
+                            <h1>{{ rank }}</h1>
+                            <p>رتبه من</p>
+                        </div>
+                        <button>مشاهده جزئیات</button>
+                    </div>
+                    <div class="card yelow-card">
+                        <div class="card-content">
+                            <h1>1</h1>
+                            <p>تعداد غیبت</p>
+                        </div>
+                        <button>مشاهده جزئیات</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
+
+{% endblock %}

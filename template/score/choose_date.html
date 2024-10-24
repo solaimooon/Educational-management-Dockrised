@@ -1,0 +1,45 @@
+{% extends 'dashbord_opratoe/oprator_base.html' %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>تاریخ ها</title>
+
+    </head>
+    <body>
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header border-bottom">
+                <h5 class="card-header-title"> جلسات این کلاس </h5>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="card-body">
+            <ul>
+                {% for date in dates %}
+                    <div class="row">
+                    <li>
+                        <a href="{% url 'score:post_score'%}?date={{ date }}" >{{ date }}</a>
+                    </li>
+                    <br>
+                    <br>
+                    </div>
+                {% endfor %}
+            </ul>
+
+                <!-- End Row -->
+
+            </div>
+
+            <!-- End Body -->
+        </div>
+        <!-- End Card -->
+    </div>
+
+    </body>
+    </html>
+{% endblock %}

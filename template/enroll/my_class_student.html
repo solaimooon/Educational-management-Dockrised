@@ -1,0 +1,184 @@
+{% extends 'dashbord_student/student_base.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load templatetag %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>کلاس های من</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,500,1,0"/>
+        <style>
+            .course-card {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%; /* Full width */
+                max-width: 1000px; /* Limit width on larger screens */
+                margin: 20px auto;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                position: relative;
+            }
+
+            .left-section {
+                margin-right: 20px; /* Add margin to push buttons to the right */
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .back-button,
+            .comment-button {
+                background-color: #00a6a6;
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 10px;
+                cursor: pointer;
+                width: 200px; /* Set a consistent width */
+            }
+
+            .comment-button {
+                background-color: white;
+                color: #00a6a6;
+                border: 1px solid #00a6a6;
+            }
+
+            .right-section {
+                flex: 1;
+                margin-left: 20px; /* Push image further to the left */
+                display: flex;
+                align-items: center;
+            }
+
+            h3 {
+                margin-right: 0;
+            }
+
+            .author {
+                color: #888;
+            }
+
+            .details {
+                margin-top: 5px;
+            }
+
+            .progress-bar {
+                width: 100%;
+                background-color: #e0e0e0;
+                border-radius: 5px;
+                margin-top: 10px;
+                position: relative;
+                height: 10px;
+            }
+
+            .progress {
+                width: 32%; /* Adjust according to progress */
+                height: 100%;
+                background-color: #00a6a6;
+                border-radius: 5px;
+            }
+
+            .course-image {
+                width: 100px;
+                height: auto;
+                position: static; /* Remove absolute positioning */
+            }
+
+            /* Media queries for responsiveness */
+            @media (max-width: 768px) {
+                .course-card {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .right-section {
+                    width: 100%; /* Make the right section full width */
+                    text-align: center; /* Center the content */
+                }
+
+                .course-image {
+                    width: auto; /* Keep the image size fixed */
+                    max-width: 100px; /* Set a fixed size for the image */
+                    height: auto; /* Maintain the image aspect ratio */
+                    margin-bottom: 20px; /* Add space between image and buttons */
+                }
+
+                .back-button,
+                .comment-button {
+                    width: 100%; /* Make buttons full width */
+                    margin: 0; /* Add space between buttons */
+                    max-width: 330px; /* Optional max-width to prevent it from becoming too large */
+                }
+
+                .left-section {
+                    width: 100%; /* Make the left section full width */
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column; /* Align buttons vertically */
+                    align-items: center;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header border-bottom">
+                <h5 class="card-header-title"> کلاس های من </h5>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="col-lg-12">
+                <div class="card-body">
+                    {% for class in enroll_objects %}
+                        <div class="course-card">
+                            <!-- Image (Left side now) -->
+                            <div class="right-section">
+                                <img class="course-image"
+                                     src="{% static 'sign_up _ log in _dashbord/assets/img/logo.jpg' %}"
+                                     alt="Django Course Image">
+                                <div class="course-details">
+                                    <h4>{{ class.klass_id.name }}</h4>
+                                    <p class="author">{{ class.klass_id.teacher.get_full_name }}</p>
+                                    {% if class.result_of_class == fail %}
+                                        <div class="details">
+                                            <span class="progress-text">وضعیت:<span
+                                                    class="badge bg-danger">{{ class.result_of_class|change_the_result_field_of_link_table }}</span></span>
+                                        </div>
+                                    {% else %}
+                                        <div class="details">
+                                            <span class="progress-text">وضعیت:<span class="badge bg-success">{{ class.result_of_class|change_the_result_field_of_link_table }}</span></span>
+
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <!-- Buttons (Right side now) -->
+                            <div class="left-section">
+                                <button href="" class="back-button">جزئیات کلاس ←</button>
+                                <a href="{% url 'enroll:report' id_enroll=class.pk %}"><button  class="comment-button">گزارش عملکرد من</button></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Body -->
+    <!-- End Card -->
+
+    </body>
+    </html>
+{% endblock %}

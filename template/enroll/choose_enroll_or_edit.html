@@ -1,0 +1,99 @@
+{% extends 'dashbord_opratoe/oprator_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ثبت نام/ویرایش</title>
+</head>
+<body>
+{% block content %}
+    <div class="col-lg-9">
+          <!-- Card -->
+          <div class="card">
+            <!-- Header -->
+            <div class="card-header border-bottom">
+              <h5 class="card-header-title"> کلاس بندی</h5>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="card-body">
+              <div class="row">
+                  <div class="col-lg-9">
+
+          <!-- End Row -->
+
+          <div class="row row-cols-sm-2 row-cols-md-3 mb-10">
+            <div class="col mb-4">
+              <!-- Card -->
+              <div class="card card-bordered shadow-none text-center h-100">
+                <div class="card-pinned">
+                  <img class="card-img-top" src="{% static 'sign_up _ log in _dashbord/assets/img/empty-school-class-conference-background_23-2148701192.jpg' %}" alt="Image Description">
+
+                  <div class="card-pinned-top-start">
+                    <!--<span class="badge bg-success rounded-pill">جدید</span>-->
+                  </div>
+
+                </div>
+
+                <div class="card-body">
+
+
+                  <h4 class="card-title">
+                    <a class="text-dark" href="{% url 'enroll:create_class' %}">تعریف کلاس جدید</a>
+                  </h4>
+                </div>
+
+                <div class="card-footer pt-0">
+                  <a href="{% url 'enroll:create_class' %}"><button type="button" class="btn btn-outline-primary btn-sm btn-transition rounded-pill">ورود</button></a>
+                </div>
+              </div>
+              <!-- End Card -->
+            </div>
+            <!-- End Col -->
+
+            <div class="col mb-4">
+              <!-- Card -->
+              <div class="card card-bordered shadow-none text-center h-100">
+                <div class="card-pinned">
+                  <img class="card-img-top" src="{% static 'sign_up _ log in _dashbord/assets/img/nody-عکس-کلاس-درس-و-معلم-1635742781.jpg'%}" alt="Image Description">
+
+
+                </div>
+
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a class="text-dark" href="{% url 'enroll:edit_class' %}">کلاس های تعریف شده</a>
+                  </h4>
+
+                </div>
+
+                <div class="card-footer pt-0">
+
+
+                  <a href="{% url 'enroll:edit_class' %}"><button type="button" class="btn btn-outline-primary btn-sm btn-transition rounded-pill">ورود</button></a>
+                </div>
+              </div>
+              <!-- End Card -->
+            </div>
+            <!-- End Col -->
+
+          </div>
+          <!-- End Row -->
+
+        </div>
+              </div>
+              <!-- End Row -->
+
+            </div>
+
+            <!-- End Body -->
+          </div>
+          <!-- End Card -->
+        </div>
+{% endblock %}
+
+
+</body>
+</html>

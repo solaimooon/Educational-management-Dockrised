@@ -1,0 +1,361 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="">
+    <!-- title -->
+    <title>کانون میراث النبی (ص)</title>
+    <!-- CSS IMPORT -->
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}" type="text/css">
+    <script src="{% static 'website/js/html5shiv.js' %}"></script>
+    <script src="{% static 'website/js/respond.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}" type="text/css">
+    <script type="text/javascript" src="{% static 'website/js/jquery.js' %}"></script>
+    <script>
+        $(function () {
+            typitvs();
+        });
+
+        function typitvs() {
+            var h3 = $(".main h4");
+            var text = $(h3).text();
+            $(h3).text("");
+            var i = 0;
+            var len = text.length;
+            setInterval(function () {
+                if (i < len) {
+                    $(h3).append(text[i]);
+                    i++;
+                }
+            }, 200);
+        }
+    </script>
+    <!-- Typing Effect Styles -->
+    <style>
+        /* Existing styles */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap');
+
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+
+        .main h4 {
+            position: relative;
+            text-align: right; /* Align h4 to the right */
+        }
+
+        .main h3 {
+            text-align: right; /* Align h3 to the right */
+        }
+
+        .main h4:after {
+            content: "";
+            width: 2px;
+            height: 100%;
+            background: #ff0000; /* Change this to the color you want */
+            position: absolute;
+            opacity: 0;
+            animation: cursor 0.5s infinite;
+        }
+
+        @keyframes cursor {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Optional: Make sure the container is full-width */
+        .main {
+            width: 100%;
+        }
+    </style>
+
+
+</head>
+<body>
+<!-- preloader -->
+<div class="preloader-container">
+    <div class="content-container">
+        <!-- preloader -->
+        <span class="spinner-section-far"></span>
+        <!-- end preloader -->
+        <h6 class="preloader-text">بارگزاری</h6>
+    </div>
+</div>
+<!-- end preloader -->
+<!-- logo -->
+<img class="img-logo" alt="logo" src="{% static 'website/logo.png' %}">
+<!-- end logo -->
+<!-- menu -->
+<div class="open">
+    <div class="cls">
+    </div>
+    <div>
+        <ul class="sub-menu-t">
+            <li class="active"><a class="menu-link" href={% url 'athentication:log in' %}><i class="fa fa-sign-in"></i>
+                ثبت نام/ ورود </a></li>
+            <li class="active"><a class="menu-link" data-section="home" data-nav-title="home" data-section-pos="0"
+                                  data-section-posy="0"><i class="fa fa-fw fa-home"></i> صفحه نخست</a></li>
+            <li><a class="menu-link" data-section="about" data-nav-title="about" data-section-pos="0"
+                   data-section-posy="-100"><i class="fa fa-fw fa-star-o"></i> درباره ما</a></li>
+            {#            <li><a class="menu-link" data-section="works" data-nav-title="works" data-section-pos="-100"#}
+            {#                   data-section-posy="-100"><i class="fa fa-fw fa-bell-o"></i> خدمات</a></li>#}
+            <li><a class="menu-link" data-section="contact" data-nav-title="contact" data-section-pos="-100"
+                   data-section-posy="0"><i class="fa fa-fw fa-list"></i> تماس با ما </a></li>
+        </ul>
+    </div>
+    <div class="cls">
+    </div>
+</div>
+<!-- end menu  -->
+<!-- page container -->
+<div class="page-container">
+    <!-- section container -->
+    <div class="section-container">
+        <!-- home section -->
+        <section class="home-section">
+            <!-- section background -->
+            <div class="bg-container"></div>
+            <!-- end section background -->
+            <!-- content -->
+            <div class="content col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-rlt no-pad centering-y">
+                <div class="col-md-12 col-sm-12 main">
+                    <!-- headline -->
+                    <h3 style="margin-top: 120px;color:#4ce400">به سامانه مدیریت آموزشی کانون میراث النبی(ص) </h3>
+                    <h4 class="main" style="color:#f2f6f8"> خوش آمدید</h4>
+                    <!-- end headline -->
+                </div>
+            </div>
+            <!-- end content -->
+        </section>
+        <!-- end home section -->
+        <!-- about section -->
+        <section class="about-section">
+            <!-- section background -->
+            <div class="bg-container-static"></div>
+            <!-- end section background -->
+            <!-- content -->
+            <div class="content col-md-6 col-md-offset-2 col-sm-12 col-sm-rlt col-xs-12 no-pad centering-y">
+                <div class="col-md-12 col-sm-12">
+                    <h1>درباره ما</h1>
+                    <!-- company description -->
+                    <div class="desc">
+                        <!-- quote -->
+                    
+                        <!-- end quote -->
+
+                        <p class="mrg-top-sm">در عصر پرتلاطم امروز، نیاز به شناخت حقیقت و نور ایمان بیش از هر زمان دیگری احساس می‌شود. مجموعه کانون آموزش معارف اسلامی میراث النّبی(ص) با هدف نشر معارف اسلامی، ترویج آموزه‌های قرآن کریم و ارائه آموزش‌های دقیق و مستند از احکام دینی تأسیس شده است.
+
+                            ما با الهام از کلام وحی و تعالیم ناب اهل‌بیت علیهم‌السلام، بر آن هستیم تا راهی روشن برای جویندگان حقیقت فراهم آوریم. تلاش ما بر این است که با بهره‌گیری از اساتید برجسته و منابع معتبر، فضایی امن و علمی را برای یادگیری و ارتقای دانش دینی فراهم کنیم.
+                            
+                            در این مسیر، بر آنیم تا معرفت دینی و بینش قرآنی را به گونه‌ای به مخاطبان ارائه دهیم که نه تنها قلب‌ها را نورانی کند، بلکه عمل به آن، زندگی‌ها را سرشار از سعادت و خوشبختی نماید.
+                            
+                            به امید آنکه به توفیق الهی، همه ما در مسیر هدایت و رستگاری گام برداریم و نور قرآن کریم در تمامی ابعاد زندگی‌مان متجلی گردد.
+                            
+                            </p>
+
+                        <p class="mrg-top-sm">
+                            از اینکه ما را همراهی می کنید سپاسگذاریم.
+                        </p>
+                    </div>
+                    <!-- end company description -->
+                </div>
+            </div>
+            <!-- end content -->
+        </section>
+        <!-- end about section -->
+        <!-- service section -->
+        <section class="works-section">
+            <!-- section background -->
+            <div class="bg-container-static"></div>
+            <!-- end section background -->
+            <!-- content -->
+            <div class="content col-md-8 col-md-offset-2 col-sm-12 col-sm-rlt col-xs-12 no-pad centering-y">
+                <div class="carousel-col">
+                    <!-- service 1 -->
+                    <div class="service col-md-4">
+                        <!-- icon container -->
+                        <div class="icon-container">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                        <!-- end icon container -->
+
+                        <!-- text container -->
+                        <div class="text-container">
+                            <h6>کلاس های احکام</h6>
+                            <p class="mrg-top-xs">بررسی و توضیح مسائل شرعی به صورت اکادمیک برای واحد های
+                                کوشا(نوجوانان)،برادران و خواهران</p>
+                        </div>
+                        <!-- end text container -->
+                    </div>
+                    <!-- end service 1 -->
+
+                    <!-- service 2 -->
+                    <div class="service col-md-4">
+                        <!-- icon container -->
+                        <div class="icon-container">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                        <!-- end icon container -->
+
+                        <!-- text container -->
+                        <div class="text-container">
+                            <h6>کلاس های روانخوانی و تجوید</h6>
+                            <p class="mrg-top-xs">برگزاری کلاس های روانحوانی و تجوید واحد های کوشا(نوجوانان)،برادران و
+                                خواهران
+                                های صفحات وب</p>
+                        </div>
+                        <!-- end text container -->
+                    </div>
+                    <!-- end service 2 -->
+
+                    <!-- service 3 -->
+                    <div class="service col-md-4">
+                        <!-- icon container -->
+                        <div class="icon-container">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                        <!-- end icon container -->
+                        <!-- text container -->
+                        <div class="text-container">
+                            <h6> کلاس های اعتقادی</h6>
+                            <p class="mrg-top-xs">برگزاری کلاس های اعتقادی و مهدویت در روز های سه شنبه و جمعه واحد
+                                برادران و خواهران</p>
+                        </div>
+                        <!-- end text container -->
+                    </div>
+                    <!-- end service 3 -->
+                </div>
+            </div>
+
+            <!-- end content -->
+        </section>
+        <!-- end works section -->
+        <!-- contact section -->
+        <section class="contact-section">
+            <!-- section background -->
+            <div class="bg-container-static"></div>
+            <!-- end section background -->
+            <!-- content -->
+            <div class="content col-md-10 col-md-offset-1 col-sm-12 col-xs-12 no-pad centering-y col-sm-rlt">
+                <!-- details -->
+                <div class="col-md-4 col-sm-12">
+                    <!-- office -->
+                    <div class="details">
+                        <h5>آدرس</h5>
+                        <p>خیابان حبیب اللهی میدان حسن حسینی کوچه لطفی <br/>حسینیه مسجد امام حسین(ع)</p>
+                    </div>
+                    <!-- end office -->
+
+                    <!-- phone -->
+                    <div class="details">
+                        <h5>تلفن تماس</h5>
+                        <p> 0912-396-5798<br/> 0912-545-3170</p>
+                    </div>
+                    <!-- end phone -->
+
+                    <!-- email -->
+
+                    <!-- end email -->
+
+                    <!-- social media -->
+                    <div class="details">
+                        <h5>ما را دنبال کنید</h5>
+
+                        <!-- social media container -->
+                        <div class="social-media-container">
+                            <a class="social-media" href="
+                            https://eitaa.com/vahede_koosha"><img
+                                    src="{% static 'website/img/sosial media icon/2lSfJCPqMllhHI88YFFavvqI7Of.svg' %}"
+                                    alt="Eitaa logo" style="width: 20px; height: 20px;"></img></a>
+                            <a class="social-media" href="https://ble.ir/vahede_koosha"><img
+                                    src="{% static 'website/img/sosial media icon/bale.svg' %}" alt="Eitaa logo"
+                                    style="width: 20px; height: 20px;"></img></a>
+                            <a class="social-media" href="https://splus.ir/vahede_koosha"><img
+                                    src="{% static 'website/img/sosial media icon/soroosh.svg' %}" alt="Eitaa logo"
+                                    style="width: 20px; height: 20px;"></img></a>
+                        </div>
+                        <!-- end social media container -->
+                    </div>
+                    <!-- end social media -->
+                </div>
+                <!-- end details -->
+
+                <!-- contact form container -->
+                {#                <div class="contact-form-container col-md-8 col-sm-12 col-xs-12">#}
+                {#                    <h5>ارسال پیام</h5>#}
+                {#                    <form class="contact-form" action="contact.php" method="post" enctype="multipart/form-data">#}
+                {#                        <!-- left side -->#}
+                {#                        <div class="col-md-6 col-sm-12 no-pad">#}
+                {#                            <div class="input-container">#}
+                {#                                <input type="text" id="name" name="name"/>#}
+                {#                                <label for="name">نام شما</label>#}
+                {##}
+                {#                                <div class="input-border-bottom"></div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                        <!-- end left side -->#}
+                {##}
+                {#                        <!-- right side -->#}
+                {#                        <div class="col-md-6 col-sm-12 no-pad">#}
+                {#                            <div class="input-container">#}
+                {#                                <input type="email" id="email" name="email"/>#}
+                {#                                <label for="email">پست الکترونیک</label>#}
+                {##}
+                {#                                <div class="input-border-bottom"></div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                        <!-- end right side -->#}
+                {##}
+                {#                        <!-- full width -->#}
+                {#                        <div class="col-xs-12 text-center no-pad">#}
+                {#                            <div class="input-container no-mrg">#}
+                {#                                <textarea id="message" name="message"></textarea>#}
+                {#                                <label for="message">متن پیام</label>#}
+                {##}
+                {#                                <div class="input-border-bottom"></div>#}
+                {#                            </div>#}
+                {##}
+                {#                            <!-- notification container -->#}
+                {#                            <div class="col-xs-12 notif-container no-pad">#}
+                {#                                <div class="form-notif"></div>#}
+                {#                            </div>#}
+                {#                            <!-- end notification container -->#}
+                {##}
+                {#                            <!-- button container -->#}
+                {#                            <div class="col-xs-12 no-pad text-right mrg-top-xs">#}
+                {#                                <button type="submit" class="button button-green button-small">ارسال پیام</button>#}
+                {#                            </div>#}
+                {#                            <!-- end button container -->#}
+                {#                        </div>#}
+                {#                        <!-- end full width -->#}
+                {#                    </form>#}
+                {#                </div>#}
+                <!-- end contact form container -->
+            </div>
+            <!-- end content -->
+        </section>
+        <!-- end contact section -->
+    </div>
+    <!-- end section container -->
+</div>
+<!-- end page container -->
+<!-- javascript import -->
+<!-- jquery -->
+<script type="text/javascript" src="{% static 'website/js/jquery.js' %}"></script>
+<!-- bootstrap -->
+<script type="text/javascript" src="{% static 'website/js/bootstrap.min.js' %}"></script>
+<!-- other plugins -->
+<script type="text/javascript" src="{% static 'website/js/plugins.min.js' %}"></script>
+<!-- google map -->
+<script src="http://maps.google.com/maps/api/js"></script>
+<!-- main js -->
+<script type="text/javascript" src="{% static 'website/js/main_slideshow.js' %}"></script>
+</body><!-- This template has been downloaded from Webrubik.com -->
+</html>

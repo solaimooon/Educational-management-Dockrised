@@ -1,0 +1,36 @@
+{% extends 'dashbord_student/student_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>داشبورد</title>
+</head>
+<body>
+{% block content %}
+    <div class="col-lg-9">
+          <!-- Card -->
+          <div class="card">
+            <!-- Header -->
+            <div class="card-header border-bottom">
+              <h5 class="card-header-title"> داشبورد</h5>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="card-body">
+              <div class="row">
+                  <p>به سامانه ما خوش آمدید!<br> لطفا جهت استفاده از امکانات سامانه، اطلاعات خود را در <a href="{% url 'dashbord:profile' pk=request.user.id %}"> تنظیمات پروفایل </a> تکمیل نمایید</p>
+              </div>
+              <!-- End Row -->
+
+            </div>
+
+            <!-- End Body -->
+          </div>
+          <!-- End Card -->
+        </div>
+{% endblock %}
+
+
+</body>
+</html>
