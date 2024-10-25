@@ -35,7 +35,7 @@ def student_info_list(request):
 
     students=User.objects.filter(is_staff=False)
     students_extra_data=extra_user_data.objects.raw(
-            "select * from athentication_extra_user_data where forign_key_id in(select id from auth_USER where is_staff=False)")
+            "select * from athentication_extra_user_data where forign_key_id in(select id from auth_user where is_staff=False)")
     # integrate the element of first itrable to element of second iterable as tuple -first element of first list to first element of second list
     zip_student=list(zip(students, students_extra_data))
 
