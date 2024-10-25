@@ -15,13 +15,16 @@ class update_extra_user_data(ModelForm):
             'sex': forms.RadioSelect(attrs={'class': 'form-check-input'}),
         }
 
-    adress=forms.CharField(required=True,max_length=500,widget=forms.Textarea(attrs={'row':2,"col":50
+    adress=forms.CharField(required=True,max_length=500,label=None,widget=forms.Textarea(attrs={'row':2,"col":50
                                                                                      ,'class': 'form-control'}))
-    meli_cood=forms.CharField(max_length=50,required=True)
+    meli_cood=forms.CharField(max_length=50,required=True,label=None)
 
     def __init__(self, *args, **kwargs):
         super(update_extra_user_data, self).__init__(*args, **kwargs)
-        self.fields['age'] = JalaliDateField(label=('تاریخ تولد'), widget=AdminJalaliDateWidget,required=True)
+        self.fields['age'] = JalaliDateField(widget=AdminJalaliDateWidget,required=True)
+        for field_name, field in self.fields.items():
+            field.label = ''  # غیرفعال کردن نمایش label برای تمام فیلدها
+
 
     def clean_image(self):
         image = self.cleaned_data.get('image')
@@ -61,6 +64,10 @@ class UserForm(forms.ModelForm):
                 'placeholder': 'example@gmail.com',
             })
         }
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.label = ''  # غیرفعال کردن نمایش label برای تمام فیلدها
 
 
 class phone_form(forms.ModelForm):
@@ -83,3 +90,7 @@ class phone_form(forms.ModelForm):
                 'tabindex': '-1'
             })
         }
+    def __init__(self, *args, **kwargs):
+        super(phone_form, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.label = ''  # غیرفعال کردن نمایش label برای تمام فیلدها

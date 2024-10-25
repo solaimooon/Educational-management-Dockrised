@@ -26,6 +26,7 @@ class klass_form(forms.ModelForm):
             'student':forms.SelectMultiple(attrs={'required': False})
             }
 
+    
 
 
 
@@ -33,14 +34,16 @@ class klass_form(forms.ModelForm):
         # override the init function of calss model form for date picker
         def __init__(self, *args, **kwargs):
             super(klass_form, self).__init__(*args, **kwargs)
-            self.fields['start_date'] = JalaliDateField(label=('تاریخ شورع کلاس'),  # date format is  "yyyy-mm-dd"
+            self.fields['start_date'] = JalaliDateField(  # date format is  "yyyy-mm-dd"
                                                 widget=AdminJalaliDateWidget)  # optional, to use default datepicker
-            self.fields['end_data'] = JalaliDateField(label=('تاریخ پایان کلاس'),  # date format is  "yyyy-mm-dd"
+            self.fields['end_data'] = JalaliDateField(  # date format is  "yyyy-mm-dd"
                                                  widget=AdminJalaliDateWidget)  # optional, to use default datepicker
-            self.fields['teacher']=forms.ModelChoiceField(
+            self.fields['teacher']=forms.ModelChoiceField(label=None,
                 queryset=User.objects.filter(is_staff=True),
                 widget = forms.Select(attrs={'class': 'form-control select2'})
             )
+            for field_name, field in self.fields.items():
+                field.label = ''  # غیرفعال کردن نمایش label برای تمام فیلدها
 
 
 
@@ -55,7 +58,7 @@ class report_according_to_data_and_course_form(forms.Form):
     date = forms.DateField()
 
     # استفاده از ModelChoiceField برای انتخاب دوره‌ها
-    course = forms.ModelChoiceField(
+    course = forms.ModelChoiceField(label=None,
         queryset=klass.objects.all().values_list('course').distinct(),  # بارگذاری گزینه‌ها از queryset
         empty_label="انتخاب کنید"  # برچسب پیش‌فرض
     )
@@ -65,12 +68,14 @@ class report_according_to_data_and_course_form(forms.Form):
         ('absent_unwarranted', 'غایب'),
 
     ]
-    type = forms.ChoiceField(choices=CHOICES)
+    type = forms.ChoiceField(choices=CHOICES,label=None)
 
     def __init__(self, *args, **kwargs):
         super(report_according_to_data_and_course_form, self).__init__(*args, **kwargs)
-        self.fields['date'] = JalaliDateField(label=('تاریخ'),  # date format is "yyyy-mm-dd"
+        self.fields['date'] = JalaliDateField(  # date format is "yyyy-mm-dd"
                                               widget=AdminJalaliDateWidget)
+        for field_name, field in self.fields.items():
+            field.label = ''  # غیرفعال کردن نمایش label برای تمام فیلدها                                      
 
 
 """class student_picker(forms.Form):

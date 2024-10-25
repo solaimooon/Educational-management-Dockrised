@@ -10,6 +10,8 @@ class presence_absence_form(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if klass_id is not None:
             self.fields['enroll'].queryset = link_table.objects.filter(klass_id=klass_id)
+        for field_name, field in self.fields.items():
+            field.label = ''  # غیرفعال کردن نمایش label برای تمام فیلدها    
         # Set the 'time' field to not required
         self.fields['time'].required = False
     class Meta:
@@ -37,25 +39,27 @@ class pure_emtiyaz_and_ons_form(forms.Form):
         else:
             self.fields[
                 'enroll'].queryset = link_table.objects.none()  # Set an empty queryset if no klass_id is provided
+        for field_name, field in self.fields.items():
+            field.label = ''  # غیرفعال کردن نمایش label برای تمام فیلدها        
 
 
 class basic_kosha_form(forms.Form):
-    hozore_va_hamrahi = forms.IntegerField(min_value=0, max_value=30,required=False, label="حضور")
-    hefz_hadis = forms.IntegerField(min_value=0, max_value=20,required=False, label="حفظ حدیث")
-    estema_file_soty = forms.IntegerField(min_value=0, max_value=40,required=False, label="اسستماع فایل صوتی")
-    rang_amizi_daftar = forms.IntegerField(min_value=0, max_value=20,required=False, label="مرتب بودن دفترچه")
-    ravankhani = forms.IntegerField(min_value=0, max_value=60,required=False, label="روانخوانی با کیفیت")
-    hegi = forms.IntegerField(min_value=0, max_value=20,required=False, label="هیجی")
-    gheraat = forms.IntegerField(min_value=0, max_value=40,required=False, label="قرائت مجلسی")
-    other = forms.IntegerField(min_value=0, max_value=20,required=False, label="موارد دیگر")
+    hozore_va_hamrahi = forms.IntegerField(min_value=0, max_value=30,required=False,)
+    hefz_hadis = forms.IntegerField(min_value=0, max_value=20,required=False, )
+    estema_file_soty = forms.IntegerField(min_value=0, max_value=40,required=False, )
+    rang_amizi_daftar = forms.IntegerField(min_value=0, max_value=20,required=False, )
+    ravankhani = forms.IntegerField(min_value=0, max_value=60,required=False, )
+    hegi = forms.IntegerField(min_value=0, max_value=20,required=False, )
+    gheraat = forms.IntegerField(min_value=0, max_value=40,required=False, )
+    other = forms.IntegerField(min_value=0, max_value=20,required=False, )
 
 class tajvid_kosha_form(forms.Form):
-    hozore_va_hamrahi = forms.IntegerField(min_value=0, max_value=30, required=False, label="حضور")
-    hefz_hadis = forms.IntegerField(min_value=0, max_value=20, required=False, label="حفظ حدیث")
-    estema_file_soty = forms.IntegerField(min_value=0, max_value=20, required=False, label="اسستماع فایل صوتی")
-    rang_amizi_daftar = forms.IntegerField(min_value=0, max_value=20, required=False, label="مرتب بودن دفترچه")
-    ravankhani = forms.IntegerField(min_value=0, max_value=60, required=False, label="روانخوانی با کیفیت")
-    hegi = forms.IntegerField(min_value=0, max_value=20, required=False, label="هیجی")
-    solve_question = forms.IntegerField(min_value=0, max_value=40, required=False, label="قرائت مجلسی")
-    other = forms.IntegerField(min_value=0, max_value=20, required=False, label="موارد دیگر")
+    hozore_va_hamrahi = forms.IntegerField(min_value=0, max_value=30, required=False,)
+    hefz_hadis = forms.IntegerField(min_value=0, max_value=20, required=False, )
+    estema_file_soty = forms.IntegerField(min_value=0, max_value=20, required=False, )
+    rang_amizi_daftar = forms.IntegerField(min_value=0, max_value=20, required=False, )
+    ravankhani = forms.IntegerField(min_value=0, max_value=60, required=False, )
+    hegi = forms.IntegerField(min_value=0, max_value=20, required=False, )
+    solve_question = forms.IntegerField(min_value=0, max_value=40, required=False, )
+    other = forms.IntegerField(min_value=0, max_value=20, required=False, )
 
