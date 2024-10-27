@@ -69,7 +69,7 @@ def my_handler(sender, instance, created, **kwargs):
     key = '78634F47647561304B41467244444B344B7172625A73766939754C5644654376777A44726D6E6476517A383D'
     if created:
         print("sms sent")
-        """enroll_id=instance.enroll_id
+        enroll_id=instance.enroll_id
         enroll_object=link_table.objects.get(enroll_id=enroll_id)
         student_id=enroll_object.student_id_id
         student_object=User.objects.get(id=student_id)
@@ -78,4 +78,5 @@ def my_handler(sender, instance, created, **kwargs):
         # this is the api of cavenegar , pass the key to url
         api = 'https://api.kavenegar.com/v1/%s/verify/lookup.json' % key
         paloyd = {'receptor': str(phone_number), 'token': str(full_name),'token2':str(full_name), "template": "absent"}
-        response = requests.post(api, data=paloyd)"""
+        response = requests.post(api, data=paloyd)
+        
