@@ -29,14 +29,13 @@ class update_extra_user_data(ModelForm):
     def clean_image(self):
         image = self.cleaned_data.get('image')
 
-        if image:
-            # بررسی اینکه image یک فایل معتبر است
-            if hasattr(image, 'size'):
-                # محدودیت حجم فایل به 100 کیلوبایت
-                if image.size > 100 * 1024:
-                    raise ValidationError("حجم تصویر نمی‌تواند بیشتر از 100 کیلوبایت باشد.")
-            else:
-                return image
+    if image:
+        # بررسی اینکه image یک فایل معتبر است
+        if hasattr(image, 'size'):
+            # محدودیت حجم فایل به ۲ مگابایت
+            if image.size > 2 * 1024 * 1024:
+                raise ValidationError("حجم تصویر نمی‌تواند بیشتر از ۲ مگابایت باشد.")
+    return image
 
 
 
