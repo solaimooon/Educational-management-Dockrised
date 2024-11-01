@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(nuyoeoo-)ha1rqz@b4!a&9kutso7mcg*_7@gr+crol833xy7w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.kanoonmns.ir','kanoonmns.ir','185.231.183.183']
+ALLOWED_HOSTS = ['www.kanoonmns.ir','kanoonmns.ir']
 
 
 # Application definition
@@ -180,3 +180,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # site framework config
 
 SITE_ID = 1
+
+# ssl config 
+# settings.py
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
