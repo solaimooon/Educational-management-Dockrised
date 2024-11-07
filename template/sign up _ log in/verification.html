@@ -11,7 +11,7 @@
       rel="stylesheet"
       
     />
-
+    <link rel="icon" href="{% static 'website\logo.png' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
   </head>
-  <style>
+  <body><style>
     body {
       width: 100%;
       height: 100vh;
@@ -36,7 +36,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      /*background: rgb(244, 254, 232);*/
     }
     form {
       width: 450px;
@@ -52,7 +51,7 @@
       flex-direction: column;
       position: relative;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+                  rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     }
     .icon {
       width: 100%;
@@ -170,109 +169,70 @@
       color: white;
     }
   </style>
-  <body>
-    <div class="center">
-      <form action="{% url 'athentication:verification' %}" method="post">
-          {% csrf_token %}
-        <div class="icon">
-          <span class="material-icons">rocket</span>
-        </div>
-        <div class="head">
-            <!--add the dir=rtl to write to left the text-->
-          <div class="title" dir="rtl">کد اعتبار سنجی به شماره شما ارسال شد </div>
-          <div class="subtitle"></div>
-        </div>
-        <span class="input-fields">
-          <span class="inputs">
-            <input
-              type="text"
-              class="input"
-              required
-              pattern="[0-9]*"
-              maxlength="1"
-              name="number1"
-            />
-            <input
-              type="text"
-              class="input"
-              required
-              pattern="[0-9]*"
-              maxlength="1"
-              name="number2"
-            />
-            <input
-              type="text"
-              class="input"
-              required
-              pattern="[0-9]*"
-              maxlength="1"
-              name="number3"
-            />
-            <input
-              type="text"
-              class="input"
-              required
-              pattern="[0-9]*"
-              maxlength="1"
-              name="number4"
-            />
-          </span>
-          <div class="timer">
-        
-            <a href="{% url 'athentication:verification' %}"><button type="button" id="resend" >برای ارسال مجدد کلیک کنید</button></a>
-            <span class="time" ></span>
-          </div>
+</head>
+<body>
+  <div class="center">
+    <form action="{% url 'athentication:verification' %}" method="post">
+      {% csrf_token %}
+      <div class="icon">
+        <span class="material-icons">rocket</span>
+      </div>
+      <div class="head">
+        <div class="title" dir="rtl">کد اعتبار سنجی به شماره شما ارسال شد</div>
+        <div class="subtitle"></div>
+      </div>
+      <span class="input-fields">
+        <span class="inputs">
+          <input type="text" class="input" required pattern="[0-9]*" inputmode="numeric" maxlength="1" name="number1" />
+          <input type="text" class="input" required pattern="[0-9]*" inputmode="numeric" maxlength="1" name="number2" />
+          <input type="text" class="input" required pattern="[0-9]*" inputmode="numeric" maxlength="1" name="number3" />
+          <input type="text" class="input" required pattern="[0-9]*" inputmode="numeric" maxlength="1" name="number4" />
         </span>
+        <div class="timer">
+          <a href="{% url 'athentication:verification' %}">
+            <button type="button" id="resend">برای ارسال مجدد کلیک کنید</button>
+          </a>
+          <span class="time"></span>
+        </div>
+      </span>
+      <button type="submit" class="btn">تایید</button>
+    </form>
+  </div>
 
-        <button type="submit" class="btn" >تایید</button>
-        <!--<div class="status" id="status">
-          <span class="material-icons" > done_outlined </span>
-          <div class="title success">تبریک</div>
-          <div class="subtitle success">Verification Successful</div>
-        </div>-->
-      </form>
-    </div>
-    <script>
-      function timer(n) {
-        document.getElementById("resend").disabled = true;
-        const interval = setInterval(() => {
-          if (n == 0) {
-            clearInterval(interval);
-            document.getElementById("resend").disabled = false;
-          }
-          document.querySelector(".time").innerHTML = n;
-          n = n - 1;
-        }, 1000);
-      }
+  <script>
+    function timer(n) {
+      document.getElementById("resend").disabled = true;
+      const interval = setInterval(() => {
+        if (n == 0) {
+          clearInterval(interval);
+          document.getElementById("resend").disabled = false;
+        }
+        document.querySelector(".time").innerHTML = n;
+        n = n - 1;
+      }, 1000);
+    }
+    timer(120);
+    document.getElementById("resend").onclick = function () {
       timer(120);
-      document.getElementById("resend").onclick = function () {
-        timer(120);
-      };
+    };
 
-      let inputs = document.querySelectorAll(".input");
-      inputs.forEach((input) => {
-        input.addEventListener("keyup", (e) => {
-          let key = e.key;
-          if (Number.isInteger(Number(key))) {
-            if (input.nextElementSibling) {
-              input.nextElementSibling.focus();
-            }
-          }
-        });
-
-        input.addEventListener("keydown", (e) => {
-          let key = e.key;
-          if (input.value == "" && key === "Backspace") {
-            if (input.previousElementSibling) {
-              input.previousElementSibling.focus();
-            }
-          }
-        });
+    let inputs = document.querySelectorAll(".input");
+    inputs.forEach((input) => {
+      input.addEventListener("input", (e) => {
+        if (input.value && input.nextElementSibling) {
+          input.nextElementSibling.focus();
+        }
       });
 
-      document.querySelector(".btn").onclick = function () {
-        document.getElementById("status").style.width = "100%";
-      };
-    </script>
+      input.addEventListener("keydown", (e) => {
+        let key = e.key;
+        if (input.value == "" && key === "Backspace") {
+          if (input.previousElementSibling) {
+            input.previousElementSibling.focus();
+          }
+        }
+      });
+    });
+  </script>
   </body>
 </html>
