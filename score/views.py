@@ -236,7 +236,7 @@ def report_sumed_score_for_operator_view(request):
     for x in course_list:
         klass_object=klass.objects.filter(course=x)
         enroll_object=link_table.objects.filter(klass_id__in=klass_object)
-        points_objects=SUM_final.objects.filter(enroll__in=enroll_object).order_by('SUM')
+        points_objects=SUM_final.objects.filter(enroll__in=enroll_object).order_by('-SUM')
         dict_course_sumeds[x]=points_objects
     print(dict_course_sumeds)
     return render(request,'score/report_sumed_point_for_operator.html',{"dict_course_sumeds":dict_course_sumeds})

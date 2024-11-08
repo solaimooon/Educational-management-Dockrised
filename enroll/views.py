@@ -60,20 +60,23 @@ def report_general_student_view(request,id_enroll):
     # if user donat have any score so the dont have any record in sum_final
     try:
         # sum of emtiyazat
-        sum_emtiyaz_for_all_session=get_object_or_404(SUM_final,enroll=id_enroll)
+        sum_emtiyaz_of_student=get_object_or_404(SUM_final,enroll=id_enroll)
+        print("amountjhgkjhkhlkjgljgjhkhg",sum_emtiyaz_of_student.SUM)
+        # get all apsent of user
+        amount_of_absentof_user=presence_absence.objects.filter(enroll=id_enroll,was_or_not_or="absent_unwarranted").count()
         # colculate the rank
-        all_object_of_sum=SUM_final.objects.all().order_by('SUM')
+        all_object_of_sum=SUM_final.objects.all().order_by('-SUM')
         counter=1
         for object in all_object_of_sum:
-            if object==sum_emtiyaz_for_all_session:
+            if object == sum_emtiyaz_of_student:
                 break
             else:
                 counter+=1
         #end calculate
-        return render(request,'enroll/report.html',{"sum_emtiyaz_for_all_session":sum_emtiyaz_for_all_session,"rank":counter})
+        return render(request,'enroll/report.html',{"sum_emtiyaz_for_all_session":sum_emtiyaz_of_student,"rank":counter,"amount_of_absentof_user":amount_of_absentof_user})
     except:
         messages.add_message(request, messages.INFO, "گزارشی برای شما تاکنون ثبت نشده است")
-        return HttpResponseRedirect(reverse("enroll:my_class_student"))
+        return HttpResponseRedirect(reverse("enroll:my_class_student"))    
 
 
 

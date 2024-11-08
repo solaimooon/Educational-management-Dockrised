@@ -38,7 +38,8 @@ services:
       - DB_PASSWORD=${MYSQL_PASSWORD}
       - DB_PORT=3306
       - debug=True
-      - ALLOWED_HOSTS = localhost ,
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+
     networks:
       - my_network
     restart: always

@@ -60,11 +60,10 @@
                                     <td>{{ record.enroll.klass_id.name }}</td>
                                     <td>{{ record.enroll.klass_id.teacher.get_full_name }}</td>
                                     {% if record.time == None %}
-                                        {% if present_object.was_or_not_or == "absent_unwarranted" %}
+                                        {% if record.was_or_not_or == 'absent_unwarranted' %}
                                             <td><span class="badge bg-danger">غایب/غیر موجه</span></td>
-
                                         {% else %}
-                                            <td><span class="badge bg-danger">غایب/ موجه</span></td>
+                                            <td><span class="badge bg-danger">غیبت/موجّه</span></td>
                                         {% endif %}
                                     {% else %}
                                         <td><span class="badge bg-success">{{ record.time }}</span></td>

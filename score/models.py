@@ -55,7 +55,7 @@ class sum_emtiyazat(models.Model):
     sumed_emtiyaz=models.DecimalField(max_digits=10,decimal_places=2)
     class Meta:
         managed = False
-        db_table = 'sum_emtiyazat'
+        db_table = 'sum_emtiyazat_for_each_day'
 
 class SUM_final(models.Model):
     enroll=models.ForeignKey(link_table,on_delete=models.DO_NOTHING)
@@ -68,15 +68,21 @@ class SUM_final(models.Model):
 def my_handler(sender, instance, created, **kwargs):
     key = '78634F47647561304B41467244444B344B7172625A73766939754C5644654376777A44726D6E6476517A383D'
     if created:
-        print("sms sent")
-        enroll_id=instance.enroll_id
-        enroll_object=link_table.objects.get(enroll_id=enroll_id)
-        student_id=enroll_object.student_id_id
-        student_object=User.objects.get(id=student_id)
-        phone_number=student_object.username
-        full_name=student_object.get_full_name()
-        # this is the api of cavenegar , pass the key to url
-        api = 'https://api.kavenegar.com/v1/%s/verify/lookup.json' % key
-        paloyd = {'receptor': str(phone_number), 'token': str(full_name),'token2':str(full_name), "template": "absent"}
-        response = requests.post(api, data=paloyd)
+        if instance.was_or_not_or == 'absent_unwarranted' :
+            print("sms sent")
+            enroll_id=instance.enroll.id
+            enroll_object=link_table.objects.get(id=enroll_id)
+            student_id=enroll_object.student_id_id
+            student_object=User.objects.get(id=student_id)
+            phone_number=student_object.username
+            print(str(phone_number))
+            first_name=str(student_object.first_name)
+            last_name=str(student_object.last_name)
+            full_name=first_name+" "+last_name
+            print(str(full_name))
+            # this is the api of cavenegar , pass the key to url
+            api = 'https://api.kavenegar.com/v1/%s/verify/lookup.json' % key
+            paloyd = {'receptor': str(phone_number), 'token': str(full_name),'token2':str(full_name), "template": "absent"}
+            response = requests.post(api, data=paloyd)
+            print("response detail sms",response.text)
         
