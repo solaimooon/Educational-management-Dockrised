@@ -4,8 +4,8 @@ create or replace view sum_emtiyazat_for_each_day as SELECT
     n.enroll_id,
     n.date_for,
     CASE 
-        WHEN EXISTS (
-            SELECT * 
+        WHEN 'present'=(
+            SELECT  was_or_not_or 
             FROM score_presence_absence p 
             WHERE p.date = n.date_for 
             AND p.enroll_id = n.enroll_id

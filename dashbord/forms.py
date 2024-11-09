@@ -33,8 +33,8 @@ class update_extra_user_data(ModelForm):
             # بررسی اینکه image یک فایل معتبر است
             if hasattr(image, 'size'):
                 # محدودیت حجم فایل به ۲ مگابایت
-                if image.size > 2 * 1024 * 1024:
-                    raise ValidationError("حجم تصویر نمی‌تواند بیشتر از ۲ مگابایت باشد.")
+                if image.size > 3 * 1024 * 1024:
+                    raise ValidationError("حجم تصویر نمی‌تواند بیشتر از 3 مگابایت باشد.")
         return image
 
 
