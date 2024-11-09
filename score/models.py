@@ -80,9 +80,14 @@ def my_handler(sender, instance, created, **kwargs):
             last_name=str(student_object.last_name)
             full_name=first_name+" "+last_name
             print(str(full_name))
+            date=instance.date
+            print("gfsdgfdgsdfg",date)
+            klass_name=enroll_object.klass_id.level
+            print(klass_name)
             # this is the api of cavenegar , pass the key to url
             api = 'https://api.kavenegar.com/v1/%s/verify/lookup.json' % key
-            paloyd = {'receptor': str(phone_number), 'token': str(full_name),'token2':str(full_name), "template": "absent"}
+            paloyd = {'receptor': str(phone_number), 'token': str(date),'token20':str(full_name),"token10":str(klass_name), "template": "absent"}
             response = requests.post(api, data=paloyd)
             print("response detail sms",response.text)
+            
         

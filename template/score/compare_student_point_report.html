@@ -1,0 +1,66 @@
+{% extends 'dashbord_student/student_base.html' %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>تاریخ ها</title>
+
+    </head>
+    <body>
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header border-bottom">
+                <h5 class="card-header-title"> مقایسه </h5>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+                    <!-- Card -->
+                    <div class="card">
+                        <!-- Body -->
+                        <div class="col-lg-12">
+                            <div class="card-body">
+                                <!-- sabte hozore body -->
+                                <div id="presenceForm_{{ forloop.counter }}" class="hidden">
+                                    <!-- emtiyazat sabt shode -->
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">ردیف</th>
+                                                <th scope="col">نام</th>
+                                                <th scope="col">نام خانوادگی</th>
+                                                <th scope="col">کلاس</th>
+                                                <th scope="col">معلم</th>
+                                                <th scope="col">امتیاز</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+    
+                                            {% for score_user in points_objects %}
+                                                <tr>
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>{{ score_user.enroll.student_id.first_name }}</td>
+                                                    <td>{{ score_user.enroll.student_id.last_name }}</td>
+                                                    <td>{{ score_user.enroll.klass_id.name }}</td>
+                                                    <td>{{ score_user.enroll.klass_id.teacher.get_full_name }}</td>
+                                                    <td>{{ score_user.SUM }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                            </div>
+            <!-- End Body -->
+        </div>
+        <!-- End Card -->
+    </div>
+
+    </body>
+    </html>
+{% endblock %}

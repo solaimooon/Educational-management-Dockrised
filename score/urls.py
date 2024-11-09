@@ -7,6 +7,7 @@ urlpatterns = [
     path('delete_csore/<int:id>/',delete_csore_view,name='delete_score'),
     path('delete_present/<int:id>/',delete_present_view,name='delete_present'),
     path("report_sumed_emtyazat_operator/",report_sumed_score_for_operator_view,name='report_sumed_emtyazat_operator'),
-    path('report_detail_score_chart/<int:enroll>/',report_detail_score_chart_view,name='report_detail_score_chart')
+    path('report_detail_score_chart/<int:enroll>/',report_detail_score_chart_view,name='report_detail_score_chart'),
+    path('compare_point/<int:enroll>/',report_detail_compare_point_view,name='report_detail_compare_point')
 
 ]

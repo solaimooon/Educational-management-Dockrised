@@ -44,22 +44,22 @@ class pure_emtiyaz_and_ons_form(forms.Form):
 
 
 class basic_kosha_form(forms.Form):
-    hozore_va_hamrahi = forms.IntegerField(min_value=0, max_value=30,required=False,)
-    hefz_hadis = forms.IntegerField(min_value=0, max_value=20,required=False, )
-    estema_file_soty = forms.IntegerField(min_value=0, max_value=40,required=False, )
-    rang_amizi_daftar = forms.IntegerField(min_value=0, max_value=20,required=False, )
-    ravankhani = forms.IntegerField(min_value=0, max_value=60,required=False, )
-    hegi = forms.IntegerField(min_value=0, max_value=20,required=False, )
-    gheraat = forms.IntegerField(min_value=0, max_value=40,required=False, )
-    other = forms.IntegerField(min_value=0, max_value=20,required=False, )
+    hozore_va_hamrahi = forms.IntegerField(min_value=0, max_value=30,required=False,label="")
+    hefz_hadis = forms.IntegerField(min_value=0, max_value=20,required=False,label="" )
+    estema_file_soty = forms.IntegerField(min_value=0, max_value=40,required=False,label="" )
+    rang_amizi_daftar = forms.IntegerField(min_value=0, max_value=20,required=False,label="" )
+    ravankhani = forms.IntegerField(min_value=0, max_value=60,required=False,label="")
+    hegi = forms.IntegerField(min_value=0, max_value=20,required=False, label="")
+    gheraat = forms.IntegerField(min_value=0, max_value=40,required=False,label="" )
+    other = forms.IntegerField(min_value=0, max_value=20,required=False,label="")
 
 class tajvid_kosha_form(forms.Form):
-    hozore_va_hamrahi = forms.IntegerField(min_value=0, max_value=30, required=False,)
-    hefz_hadis = forms.IntegerField(min_value=0, max_value=20, required=False, )
-    estema_file_soty = forms.IntegerField(min_value=0, max_value=20, required=False, )
-    rang_amizi_daftar = forms.IntegerField(min_value=0, max_value=20, required=False, )
-    ravankhani = forms.IntegerField(min_value=0, max_value=60, required=False, )
-    hegi = forms.IntegerField(min_value=0, max_value=20, required=False, )
-    solve_question = forms.IntegerField(min_value=0, max_value=40, required=False, )
-    other = forms.IntegerField(min_value=0, max_value=20, required=False, )
+    hozore_va_hamrahi = forms.IntegerField(min_value=0, max_value=30, required=False,label="")
+    hefz_hadis = forms.IntegerField(min_value=0, max_value=20, required=False,label="")
+    estema_file_soty = forms.IntegerField(min_value=0, max_value=20, required=False,label="")
+    rang_amizi_daftar = forms.IntegerField(min_value=0, max_value=20, required=False,label="")
+    ravankhani = forms.IntegerField(min_value=0, max_value=60, required=False,label="")
+    hegi = forms.IntegerField(min_value=0, max_value=20, required=False,label="")
+    solve_question = forms.IntegerField(min_value=0, max_value=40, required=False,label="")
+    other = forms.IntegerField(min_value=0, max_value=20, required=False,label="")
 

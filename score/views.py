@@ -4,6 +4,7 @@ from datetime import timedelta
 from enroll.models import *
 from .forms import *
 from .models import *
+from enroll.models import *
 import urllib
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -68,7 +69,7 @@ def post_score_view(request,id=None):
                 basic_kosha_form_object=basic_kosha_form()
                 return render(request,'score/basic_form_score.html',{"basic_kosha_form_object":basic_kosha_form_object,"presence_absence_form_object":presence_absence_form_object,"pure_emtiyaz_and_form_object":pure_emtiyaz_and_form_object,"list_of_scores":list_of_scores,"presents_objects":presents_objects})
             # show the tajvid form
-            elif klass_object.level.name in["تجوید 1/1","تجوید1/2","تجوید2/1","تجوید2/2","تجوید3/1","تجوید3/2","تجوید4/1","تجوید4/2"]:
+            elif klass_object.level.name in["تجوید1/1","تجوید1/2","تجوید2/1","تجوید2/2","تجوید3/1","تجوید3/2","تجوید4/1","تجوید4/2"]:
                 # get emtiyazat that saved before
                 # call the retrive_score_saved
                 list_of_scores = retrive_score_saved(request, date)
@@ -281,6 +282,14 @@ def report_detail_score_chart_view(request, enroll):
     except:
         messages.add_message(request,messages.INFO,"لطفا بعدا تلاش کنید")
 
+def report_detail_compare_point_view(request,enroll):
+    # retrive the distinct course
+    klass_id=link_table.objects.get(id=enroll).klass_id.id
+    course=klass.objects.get(id=klass_id).course
+    klases=klass.objects.filter(course=course)
+    tabel_link=link_table.objects.filter(klass_id__in=klases)
+    points_objects=SUM_final.objects.filter(enroll__in=tabel_link).order_by('-SUM') 
+    return render(request,'score/compare_student_point_report.html',{"points_objects":points_objects})
 
 
 
