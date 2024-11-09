@@ -39,6 +39,7 @@ services:
       - DB_PORT=3306
       - debug=True
       - ALLOWED_HOSTS=localhost,127.0.0.1
+      - DJANGO_ENV=development
 
     networks:
       - my_network

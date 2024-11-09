@@ -39,6 +39,7 @@ services:
       - DB_PORT=3306
       - debug=False
       - ALLOWED_HOSTS=www.kanoonmns.ir,kanoonmns.ir
+      - DJANGO_ENV=production
     networks:
       - my_network
     restart: always

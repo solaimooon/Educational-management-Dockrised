@@ -14,7 +14,7 @@ from pathlib import Path
 import os.path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+print("base is here :",BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -22,8 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-(nuyoeoo-)ha1rqz@b4!a&9kutso7mcg*_7@gr+crol833xy7w'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('debug')
+
 
 ALLOWED_HOSTS =str(os.getenv('ALLOWED_HOSTS')).split(',')
 
@@ -64,11 +63,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mirasonabi.urls'
-
+TEMPLATES_DIR = os.path.join(BASE_DIR, '..', 'template')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'template'],
+        'DIRS': [
+            TEMPLATES_DIR,  # مسیر فولدر templates که یک لول بالاتر است
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,12 +136,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static/"]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_file')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, '..', 'static/')]
+STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static_file')
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
