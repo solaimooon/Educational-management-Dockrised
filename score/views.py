@@ -20,20 +20,32 @@ def choose_date_view(request,id):
     # get the klass_id and save to session
     request.session["klass_id"]=request.GET.get("klass_id")
     # get the class object
-    class_object=klass.objects.filter(id=id)[0]
-    start_date=str(class_object.start_date)
-    end_data=str(class_object.end_data)
-    # create the datetime object
-    date=datetime.strptime(start_date, "%Y-%m-%d")
-    end_data=datetime.strptime(end_data, "%Y-%m-%d")
-    list_date=[]
-    while date<=end_data:
-        # append the time to list and slice datetiem object form time
-        list_date.append(str(date)[0:11])
-        date=date + timedelta(days=7)
-    # create sessoin "enroll"
-    request.session["enroll"] = "هنوز حضوری ثبت نکرده اید"
-    return render(request,'score/choose_date.html',{"dates":list_date})
+    class_object = klass.objects.filter(id=id).first()
+
+    if not class_object:
+        return render(request, 'score/choose_date.html', {"dates": [], "error": "آیتم موردنظر یافت نشد."})
+
+    # دریافت تاریخ شروع و پایان به‌صورت تاریخ شمسی
+    start_date = class_object.start_date  # jDateField - نیازی به تبدیل به رشته نیست
+    end_date = class_object.end_data      # jDateField - نیازی به تبدیل به رشته نیست
+
+    # اطمینان از نوع داده‌ها
+    if not isinstance(start_date, jdatetime.date) or not isinstance(end_date, jdatetime.date):
+        return render(request, 'score/choose_date.html', {"dates": [], "error": "تاریخ‌ها نامعتبر هستند."})
+
+    # ایجاد لیست تاریخ‌ها
+    list_date = []
+    current_date = start_date
+
+    while current_date <= end_date:
+        list_date.append(str(current_date))  # تبدیل تاریخ به رشته برای ذخیره در لیست
+        current_date += timedelta(days=7)    # اضافه کردن 7 روز
+
+    # ذخیره لیست در سشن
+    request.session["enroll"] = "هنوز حضوری ثبت نکرده‌اید"
+
+    # رندر قالب
+    return render(request, 'score/choose_date.html', {"dates": list_date})
 
 # save the hozore and score
 @login_required(login_url='/athentication/')
