@@ -56,7 +56,7 @@ class basic_kosha_form(forms.Form):
 class tajvid_kosha_form(forms.Form):
     hozore_va_hamrahi = forms.IntegerField(min_value=0, max_value=30, required=False,label="")
     hefz_hadis = forms.IntegerField(min_value=0, max_value=20, required=False,label="")
-    estema_file_soty = forms.IntegerField(min_value=0, max_value=20, required=False,label="")
+    estema_file_soty = forms.IntegerField(min_value=0, max_value=40, required=False,label="")
     rang_amizi_daftar = forms.IntegerField(min_value=0, max_value=20, required=False,label="")
     ravankhani = forms.IntegerField(min_value=0, max_value=60, required=False,label="")
     hegi = forms.IntegerField(min_value=0, max_value=20, required=False,label="")
