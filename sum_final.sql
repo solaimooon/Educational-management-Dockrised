@@ -7,3 +7,5 @@ FROM
     sum_emtiyazat_for_each_day n
 GROUP BY 
     enroll_id;
+
+-- محدود کردن جمع به دو رقم اعشار    
