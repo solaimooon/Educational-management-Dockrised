@@ -257,7 +257,6 @@ def report_sumed_score_for_operator_view(request):
 
 def report_detail_score_chart_view(request, enroll):
     try:
-
         scores_queryset = sum_emtiyazat.objects.filter(enroll=enroll).order_by('date_for')
 
         # دریافت شیء ثبت‌نام
@@ -265,20 +264,15 @@ def report_detail_score_chart_view(request, enroll):
         klass_id = enroll_object.klass_id_id
         class_object = klass.objects.get(id=klass_id)
 
-        start_date = str(class_object.start_date)
-        end_date = str(class_object.end_data)
-
-        # تبدیل تاریخ‌ها به datetime objects
-        start_date = datetime.strptime(start_date, "%Y-%m-%d")
-        end_date = datetime.strptime(end_date, "%Y-%m-%d")
-
+        start_date = class_object.start_date
+        end_date = class_object.end_data
+        
         # لیست تاریخ‌های هفتگی
         list_date = []
         current_date = start_date
         while current_date <= end_date:
-            list_date.append(current_date.strftime("%Y-%m-%d"))
-            current_date += timedelta(days=7)
-
+            list_date.append(str(current_date))  # تبدیل تاریخ به رشته برای ذخیره در لیست
+            current_date += timedelta(days=7)    # اضافه کردن 7 روز
         # ایجاد لیستی از امتیازها بر اساس تاریخ‌ها
         scores = []
         for date in list_date:
