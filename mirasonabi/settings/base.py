@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'athentication',
     'website',
+    'ramazan',
     'dashbord',
     'enroll',
     'score',
