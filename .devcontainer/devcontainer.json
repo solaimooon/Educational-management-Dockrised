@@ -1,0 +1,16 @@
+{
+    "name": "Django Dev Container",
+    "dockerComposeFile": "../Docker-Compose_dev.yml",
+    "service": "backend",
+    "workspaceFolder": "/backend",
+    "extensions": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "eamodio.gitlens"
+    ],
+    "settings": {
+      "python.defaultInterpreterPath": "/usr/local/bin/python",
+      "python.analysis.autoImportCompletions": true
+    },
+    "remoteUser": "root"
+  }
