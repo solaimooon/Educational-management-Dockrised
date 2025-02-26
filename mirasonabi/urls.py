@@ -34,6 +34,7 @@ urlpatterns = [
     path('enroll_choose/',include('enroll.urls')),
     path('choose_date/',include('score.urls')),
     path('ramazan/',include('ramazan.urls')),
+    path('ramazan/',include('compattions.urls')),
     path(
     "sitemap.xml",
     sitemap,
