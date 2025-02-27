@@ -20,6 +20,8 @@
 
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{% static 'sign_up _ log in _dashbord/assets/css/theme.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
         .form-check-input {
             margin-right: 0.5rem;
@@ -456,6 +458,11 @@
                                             <i class="bi-person nav-icon"></i>کلاس های من
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{% url 'compattions:all_compattions' %}">
+                                            <i class="fas fa-trophy nav-icon"></i>   مسابقات
+                                        </a>
+                                    </li>
                                 </ul>
 {##}
 {#                                <span class="text-cap">مسابقات</span>#}
@@ -686,6 +693,7 @@
     </div>
 </div>
 <!-- ALERT -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% if messages %}
     <ul class="messages">

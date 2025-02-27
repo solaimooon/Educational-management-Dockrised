@@ -17,7 +17,7 @@ class update_extra_user_data(ModelForm):
 
     adress=forms.CharField(required=True,max_length=500,label=None,widget=forms.Textarea(attrs={'row':2,"col":50
                                                                                      ,'class': 'form-control'}))
-    meli_cood=forms.CharField(max_length=50,required=True,label=None)
+    meli_cood=forms.CharField(max_length=50,label=None,required=False)
 
     def __init__(self, *args, **kwargs):
         super(update_extra_user_data, self).__init__(*args, **kwargs)
