@@ -117,7 +117,10 @@ def verification (request):
                 user = User.objects.create_user(username=username,password=password)
                 extra_user_data.objects.create(forign_key=user)
                 login(request, user)
-                return redirect('/dashbord/')
+                extra_data = extra_user_data.objects.filter(forign_key=request.user.pk)[0]
+                request.session["picture"] = extra_data.image.url
+                messages.add_message(request, messages.INFO,"ابتدا اطلاعات خود را تکمیل نمایید")
+                return HttpResponseRedirect(reverse("dashbord:profile" ,args=[request.user.id]))
 
 def update_password_view(request):
     if request.method=='GET':

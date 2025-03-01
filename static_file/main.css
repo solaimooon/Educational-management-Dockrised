@@ -1,0 +1,138 @@
+
+.navbar {
+    background: rgba(0, 0, 0, 0.4); /* پس‌زمینه شفاف */
+    backdrop-filter: blur(9px); /* افکت بلور */
+    padding: 10px 20px;
+  }
+  
+  .navbar-brand img {
+    border: 2px solid white; /* حاشیه سفید دور لوگو */
+  }
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .custom-btn {
+    width: 70px;
+    height: 70px;
+    background: #d4d6d9; /* پس‌زمینه کم‌رنگ */
+    border-radius: 15px; /* گوشه‌های گرد */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* سایه زیبا */
+    transition: all 0.3s ease;
+  }
+  
+  .custom-btn i {
+    font-size:50px;
+    color: #1a41a6; /* رنگ آیکون */
+  }
+  
+  .custom-btn:hover {
+    background: #e2e6ea; /* تغییر رنگ هنگام هاور */
+  }
+  
+  .btn-text {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+  }
+/* class  */
+
+.card-1,
+.card-2,
+.card-3 {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
+    url(static/gbf.jpg);
+  background-size: cover;
+  box-shadow: 7px 8px 50px #555;
+  max-width: 370px;
+
+ 
+}
+
+.card-list-item {
+  border-bottom: 1px groove #eee;
+  width: 55%;
+  margin: auto;
+}
+
+.membership-card-button {
+  background-color: #2980b9;
+  width: 130px;
+  border-radius: 25px;
+  box-shadow: 5px 8px 18px #000;
+  transition: all 0.4s;
+}
+
+.membership-card-button:hover {
+  background-color: #3498db;
+  transform: translateY(-2px);
+}
+
+@keyframes moveFromLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes moveFromRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes moveFromBottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.moveFromLeft {
+  animation-name: moveFromLeft;
+  animation-duration: 2s;
+}
+
+.moveFromRight {
+  animation-name: moveFromRight;
+  animation-duration: 2s;
+}
+
+.moveFromBottom {
+  animation-name: moveFromBottom;
+  animation-duration: 2s;
+}
+
+.background{
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)),url(static/islamic-new-year-pattern-background.jpg);
+    background-size: contain;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* end of class  */
+
+
