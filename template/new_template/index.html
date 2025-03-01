@@ -1,0 +1,331 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کانون میراث النبی(ص)</title>
+
+    <!-- فایل CSS بوت‌استرپ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    <!-- fontawsone-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static "main.css" %}">
+    <!--import font from google-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        
+
+
+        .custom-color {
+            color: #6f42c1;
+            /* رنگ بنفش سفارشی */
+        }
+
+        body {
+            font-family: "Vazirmatn", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .carousel-item {
+            height: 70vh;
+        }
+
+        .carousel-item img,
+        .carousel-item video {
+            height: 100%;
+            object-fit: cover;
+            /* جلوگیری از کشیدگی */
+        }
+    </style>
+</head>
+
+<body>
+    <!--navbar-->
+    <nav class="navbar navbar-expand fixed-top navbar-dark bg-transparent p-1">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="{% static "static/logo.png" %}" alt="" width="50" height="50" class="rounded-circle me-2">
+                <span class="fw-bold text-light">کانون میراث النبی(ص)</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <a class="btn btn-primary rounded-pill  py-2 shadow-sm" href="{% url 'athentication:log in' %}">ورود | ثبت نام</a>
+            </div>
+        </div>
+    </nav>
+    <!-- silder -->
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-item active" data-bs-interval="5500">
+                <video class="d-block w-100" autoplay loop muted>
+                    <source src="{% static "static/Untitled ‑ Made with FlexClip (7).mp4" %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100 " src="{% static 'static/sample5.jpg' %}" data-bs-interval="6000">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    </div>
+
+    <!-- button-->
+    <div class="container-fluid mt-5 ">
+        <div class="row">
+            <div class="col-lg-2 col-md-3 col-6">
+                <a href="{% url 'athentication:log in' %}"style="text-decoration: none;"><div class="btn-container">
+                    <div class="custom-btn">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <p class="btn-text">سامانه مدیریت آموزشی</p>
+                </div></a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6">
+                <a href={% url 'athentication:log in' %} style="text-decoration: none;"><div class="btn-container">
+                    <div class="custom-btn">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <p class="btn-text">مسابقه </p>
+                </div></a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6">
+                <div class="btn-container">
+                    <div class="custom-btn">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <p class="btn-text">محتوای آموزشی </p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6">
+                <a href="#contact" style="text-decoration: none;"><div class="btn-container">
+                    <div class="custom-btn">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <p class="btn-text"> تماس باما</p>
+                </div></a>
+            </div>
+        </div>
+    </div>
+    <!--end button-->
+
+    <!-- about-->
+    <section class="py-5">
+    <div class="container-fluid mt-5">
+        <div class="about rounded-4 shadow-lg p-4 position-relative" style="background: rgba(255, 255, 255, 0.9);">
+            <div class="row">
+                <h2 class="text-center my-3 display-4 fw-bold">درباره ما</h2>
+            </div>
+            <div class="row mt-3 align-items-center justify-content-center">
+                <!-- متن -->
+                <div class="col-md-6 col-12 order-2 order-md-1">
+                    <p class="text-lg-start text-center px-4 px-lg-2 fs-5" style="line-height: 1.8;">
+مجموعه کانون آموزش معارف اسلامی میراث النّبی(ص) با هدف نشر معارف اسلامی، ترویج آموزه‌های قرآن کریم و ارائه آموزش‌های مستند احکام دینی تأسیس شده است. این مجموعه با الهام از کلام وحی و تعالیم اهل‌بیت(ع)، فضایی علمی و امن برای یادگیری و ارتقای دانش دینی فراهم کرده است. هدف اصلی ارائه معرفت دینی و بینش قرآنی است تا ‌نه تنها دل‌ها را روشن کند، بلکه زندگی‌ها را به سعادت و خوشبختی برساند. به امید هدایت و رستگاری همگان در پرتو نور قرآن کریم و اهل بیت علیهم السلام.                    </p>
+                </div>
+                <!-- تصویر -->
+                <div class="col-md-6 col-12 order-1 order-md-2 d-flex justify-content-center">
+                    <img src="{% static "static/Lovepik_com-380134727-hand-drawn-cartoon-reading-quran-purple-illustration-stars-quran-islamic.png" %}"
+                         style="width: 350px; height: 350px; "
+                         class=" mt-3 mt-lg-0">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!--end about-->
+
+    <!--class-->
+    <section class="background">
+        <div class="container-fluid p-5 text-center">
+            <!-- title  -->
+            <div class="row text-center mb-5 justify-content-center">
+                <div class="col-xl-6 col-lg-8 col-md-10">
+                    <h1 class="font-weight-bold "style="font-size: 40px ;font-family: Vazirmatn"> کلاس ها</h1>
+                    <p class="text-muted lh-2 h5"></p>
+                </div>
+            </div>
+            <!-- end of title  -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card card-1 text-light py-4 my-4 border-0 mx-auto">
+                        <div class="card-body">
+                            <h4 class="mb-5">واحد کوشا</h4>
+                            <h1>یکشنبه ها</h1>
+                            <ul class="list-unstyled">
+                                <li class="py-3 card-list-item">کلاس احکام </li>
+                                <li class="py-3 card-list-item">کلاس روانخوانی و تجوید</li>
+                                <li class="py-3 card-list-item">کلاس آداب</li>
+                                <li class="py-3 card-list-item border-0"> نوجوانان زیر 16 سال</li>
+                                <li class="py-3 card-list-item border-0">
+                                    <ul class="list-unstyled d-flex justify-content-center">
+                                        <li class="mx-2">
+                                            <a class="" href="
+                                              https://ble.ir/vahede_koosha"><img src="{% static 'sosial media icon/bale.svg' %}" alt=""
+                                                    style="width: 30px; height: 30px;"></img>
+                                            </a>
+                                        </li>
+                                        <li class="mx-2">
+                                            <a class="" href="
+                                              https://eitaa.com/vahede_koosha"><img
+                                                    src="{% static 'sosial media icon/2lSfJCPqMllhHI88YFFavvqI7Of.svg' %}" alt=""
+                                                    style="width: 30px; height: 30px;"></img>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!--<a href="" class="btn membership-card-button text-light">ثبت نام</a>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-1 text-light py-4 my-4 border-0 mx-auto">
+                        <div class="card-body">
+                            <h4 class="mb-5">برادران</h4>
+                            <h1>سه شنبه ها</h1>
+                            <ul class="list-unstyled">
+                                <li class="py-3 card-list-item">کلاس احکام </li>
+                                <li class="py-3 card-list-item">کلاس روانخوانی و تجوید</li>
+                                <li class="py-3 card-list-item">کلاس عقاید</li>
+                                <li class="py-3 card-list-item border-0"> آقایان بالای 16 سال</li>
+                                <li class="py-3 card-list-item border-0">
+                                    <ul class="list-unstyled d-flex justify-content-center">
+                                        <li class="mx-2">
+                                            <a href="https://t.me/mirasonabi"><i
+                                                    class="fa-brands fa-telegram fa-2x text-primary"></i></a>
+                                        </li>
+                                        <li class="mx-2">
+                                            <a class="" href="
+                                              https://ble.ir/mirasonabi"><img src="{% static 'sosial media icon/bale.svg' %}" alt=""
+                                                    style="width: 30px; height: 30px;"></img>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!--<a href="" class="btn membership-card-button text-light">ثبت نام</a>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-1 text-light py-4 my-4 border-0 mx-auto">
+                        <div class="card-body">
+                            <h4 class="mb-5"> خواهران</h4>
+                            <h1> چهارشنبه ها</h1>
+                            <ul class="list-unstyled">
+                                <li class="py-3 card-list-item">کلاس احکام </li>
+                                <li class="py-3 card-list-item">کلاس روانخوانی و تجوید</li>
+                                <li class="py-3 card-list-item">کلاس عقاید </li>
+                                <li class="py-3 card-list-item border-0">بدون محدودیت سنی </li>
+                                <li class="py-3 card-list-item border-0">
+                                    <ul class="list-unstyled d-flex justify-content-center">
+                                        <li class="mx-2">
+                                            <a href="https://t.me/mirasonabi"><i
+                                                    class="fa-brands fa-telegram fa-2x text-primary"></i></a>
+                                        </li>
+                                        <li class="mx-2">
+                                            <a class="" href="
+                                              https://ble.ir/mirasonabi"><img src="{% static 'sosial media icon/bale.svg' %}" alt=""
+                                                    style="width: 30px; height: 30px;"></img>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!--<a href="" class="btn membership-card-button text-light">ثبت نام</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end class-->
+
+    <!-- footer-->
+    <footer style="background-color: #142a62 " id="contact">
+    <div class="container pb-1 pb-lg-5">
+        <div class="row content-space-t-2">
+            <div class="col-lg-4 ">
+                <h5 class="text-light mt-5 mb-4">تماس با ما :</h5>
+                <ul class="list-unstyled ">
+                    <li>
+                        <p class="mb-3 mt-3 text-light rounded shadow text-center">نظامت واحد کوشا(آقای پهلوانی) :<a class="link-sm link-light " href="tel:0912-545-3170" style="text-decoration: none">  09125453170  </a></p>
+                    </li>
+                    <li>
+                        <p class="mb-3 mt-3 text-light rounded shadow text-center">نظامت واحد برادران(آقای ساعدی) :<a class="link-sm link-light " href="tel:09123965798" style="text-decoration: none"> 09123965798 </a></p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm mb-7 ">
+                <h5 class="text-white mt-5 mb-3"> شبکه های اجتماعی</h5>
+                <!-- List -->
+                <ul class="list-unstyled list-py-1 mb-5">
+                    <div class="col-sm-auto">
+                        <!-- Socials -->
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mx-0">
+                                <a class="btn btn-soft-light btn-xs btn-icon" href="https://ble.ir/mirasonabi"><img
+                                        src="{% static "sosial media icon/bale.svg" %}"
+                                        style="width: 30px; height: 30px;"></img></a>
+                            </li>
+                            <li class="list-inline-item mx-0">
+                                <a class="btn btn-soft-light btn-xs btn-icon" href="
+                                https://eitaa.com/vahede_koosha"><img
+                                        src="{% static 'sosial media icon/2lSfJCPqMllhHI88YFFavvqI7Of.svg'%}"
+                                        alt="Eitaa logo" style="width: 30px; height: 30px;"></img></a>
+                            </li>
+                        </ul>
+                        <!-- End Socials -->
+                    </div>
+                </ul>
+                <!-- End List -->
+            </div>
+            <!-- End Col -->
+        </div>
+        <!-- End Row -->
+
+        <div class="border-top border-white-10 my-7"></div>
+
+        <!-- Copyright -->
+        <div class="w-md-85 text-lg-center mx-lg-auto">
+            <p class="text-white-50 small mt-4">تمامی حقوق برای کانون آموزش معارف اسلامی میراث النبی (ص) محفوظ میباشد. </p>
+            <p class="text-white-50 small">طراحی و کد نویسی توسط <a href="https://soleymoon.ir">خادم القران</a></p>
+        </div>
+        <!-- End Copyright -->
+    </div>
+</footer>
+    <!-- end footer-->
+
+    <!-- 1. jQuery (باید اول بارگذاری شود) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+        
+
+</body>
+
+</html>
