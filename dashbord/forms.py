@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
 class update_extra_user_data(ModelForm):
     class Meta:
         model = extra_user_data
-        fields = ['age', 'adress', 'meli_cood', 'sex', 'image']
+        fields = ['age', 'adress', 'sex', 'image']
         widgets = {
 
             'sex': forms.RadioSelect(attrs={'class': 'form-check-input'}),
