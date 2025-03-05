@@ -21,6 +21,9 @@
 
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{% static 'sign_up _ log in _dashbord/assets/css/theme.min.css' %}">
+    <!--font awsone-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style class="fslightbox-styles">.fslightbox-absoluted {
         position: absolute;
         top: 0;
@@ -506,7 +509,14 @@
                                 </ul>
 
                                 <!-- End List -->
-
+                                <span class="text-cap"> ماه رمضان </span>
+                                <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{% url "ramazan:chose_peried_of_ramazan" %}">
+                                            <i class="bi bi-bicycle nav-icon"></i> ثبت امتیاز
+                                        </a>
+                                    </li>
+                                </ul>
                                 <div class="d-lg-none">
                                     <div class="dropdown-divider"></div>
 

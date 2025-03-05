@@ -1,0 +1,39 @@
+{% extends 'dashbord_opratoe/oprator_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+        <!-- Header -->
+        <div class="card-header border-bottom">
+            <h5 class="card-header-title">  اسامی واجد شرایط</h5>
+        </div>
+        <!-- End Header -->
+
+        <!-- card -->
+        <div class="card-body">
+            <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">نام/نام خانوادگی</th>
+                        <th scope="col">امتیازات</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}  
+                      <tr>
+                        <td>{{user.forign_key.get_full_name}}</td>
+                        <td ><a class="btn btn-success" href="{% url "ramazan:register_point" id=user.forign_key.id%}"> مشاهده</a> </td>
+                      </tr>
+                    {% endfor%}  
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+        <!-- End card -->
+        </div>
+        <!-- End Card -->
+    </div>
+{% endblock %}

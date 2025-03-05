@@ -1,0 +1,96 @@
+{% extends 'dashbord_opratoe/oprator_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+        <!-- Header -->
+        <div class="card-header border-bottom">
+            <h5 class="card-header-title">  ثبت امتیاز  <span class="badge bg-danger text-light" style="font-size: 20px;">
+              {{ student_selected_object.first_name }}
+          </span></h5>
+        </div>
+        <!-- End Header -->
+
+        <!-- card -->
+        <div class="card-body">
+            <div class="row">
+                
+            </div>
+
+            <form class="mt-4" action="{% url 'ramazan:register_point' %}" method="POST">
+                 {% csrf_token %}
+                <div class="col-sm-12">
+                    <label> نوع امتیاز </label>
+                    {{ form_ramazan_register.type }}
+                </div>
+                <div class="col-sm-12">
+                    <label> مقدار</label>
+                    {{ form_ramazan_register.amount }}
+                </div>
+                <div class='col-sm-12'>
+                    <button type="submit" class="btn btn-primary mt-3">ثبت</botton>
+                </div>
+            </form>
+            <div class='row mt-4'>
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        
+                        <th scope="col text-center "> <span class='text-center'>تاریخ و ساعت ثبت</span></th>
+                        <th scope="col text-center">نوع</th>
+                        <th scope="col text-center ">مقدار</th>
+                        <th scope="col text-center ">عملیات</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for point in points %}
+                        <tr>
+                          
+                          <td class='text-center'>{{point.create_at|date:"Y/m/d H:i"}}</td>
+                          <td class='text-center'>{{point.type}}</td>
+                          <td class='text-center'>{{point.amount}}</td>
+                          <td class='text-center'><form id="delete-form2-{{ point.id }}"
+                            action="{% url "ramazan:delete_point" id=point.id %}"
+                            method="POST">
+                          {% csrf_token %}
+                          <a href="javascript:void(0);"
+                             class="btn btn-sm btn-icon btn-ghost-danger"
+                             onclick="confirmDelete('{{ point.id }}')">
+                              <i class="bi-trash"></i>
+                          </a>
+                      </form></td>
+                        </tr>
+                      {% endfor %}  
+                    </tbody>
+                  </table>
+            </div>
+            <!-- End Row -->
+        </div>
+
+        <!-- End card -->
+        </div>
+        <!-- End Card -->
+    </div>
+    <!-- confirmation sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(objectId) {
+            // Trigger SweetAlert confirmation
+            Swal.fire({
+                title: 'آیا مطمئن هستید؟',
+                text: "پس از حذف قادر به بازیابی نمی باشید",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله حذف کن!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, submit the form
+                    document.getElementById('delete-form2-' + objectId).submit();
+                }
+            });
+        }
+    </script>
+{% endblock %}
