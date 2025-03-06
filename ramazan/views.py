@@ -21,13 +21,9 @@ def choose_student(request, peried):
     request.session["period"] = peried
 
     current_year = jdatetime.date.today().year
-    users = extra_user_data.objects.annotate(
-        birth_year=ExtractYear(F("age"))
-    ).annotate(
-        calculated_age=current_year - F("birth_year")  # Rename to avoid conflict
-    ).filter(
+    users = extra_user_data.objects.filter(
         sex="male",
-        calculated_age__lt=16  # Use new annotation name
+        forign_key__is_staff=False  # Use new annotation name
     )
     print(users)
     return render(request, 'ramazan/choose_studnet.html', {"users": users})
@@ -52,7 +48,7 @@ def register_point(request,id=None):
             ramazan_point.Time_period = Time_period.objects.get(id=request.session['period'])
             ramazan_point.save()
             messages.success(request, "امتیاز با موفقیت ثبت شد.")
-            return  HttpResponseRedirect(reverse("ramazan:choose_student",kwargs={"id":request.session["student_id"]}))
+            return  HttpResponseRedirect(reverse("ramazan:choose_student",kwargs={"peried":request.session["period"]}))
 def delete_point(request,id):
     if request.method == 'POST':
         r.objects.filter(id=id).delete()

@@ -17,6 +17,7 @@
                     <thead>
                       <tr>
                         <th scope="col">نام/نام خانوادگی</th>
+                        <th scope="col">تاریخ تولد</th>
                         <th scope="col">امتیازات</th>
                       </tr>
                     </thead>
@@ -24,6 +25,7 @@
                     {% for user in users %}  
                       <tr>
                         <td>{{user.forign_key.get_full_name}}</td>
+                        <td>{{user.age}}</td>
                         <td ><a class="btn btn-success" href="{% url "ramazan:register_point" id=user.forign_key.id%}"> مشاهده</a> </td>
                       </tr>
                     {% endfor%}  
