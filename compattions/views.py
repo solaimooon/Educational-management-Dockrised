@@ -10,7 +10,7 @@ def all_compattions(request):
         messages.add_message(request, messages.INFO,"ابتدا اطلاعات خود را تکمیل نمایید")
         return HttpResponseRedirect(reverse("dashbord:profile" ,args=[request.user.id]))
     else:
-        all_compattions=compattions.objects.all().order_by('creat_at')
+        all_compattions=compattions.objects.all().order_by('-creat_at')
         return render(request,"compattions/index_compattions.html",{"all_compattions":all_compattions})
 def celected_competions(request,id):
     celected_competion=compattions.objects.filter(pk=id)[0]
