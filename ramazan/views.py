@@ -68,7 +68,7 @@ def show_ramazan_point (request,period):
         return render (request,'ramazan/ramazan_show_point.html',{"point":point})
     except:
         messages.info(request, "برای شما امتیازی ثبت نشده است")
-        return HttpResponseRedirect(reverse("ramazan:choose_student",kwargs={"pk":request.user.id}))
+        return HttpResponseRedirect(reverse("ramazan:choose_period_student"))
         
 
 def list_ramazan_emtiyaz_student(request):
