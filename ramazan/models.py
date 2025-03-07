@@ -19,4 +19,15 @@ class ramazan_point(models.Model):
     own_user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='own_user')
     user_register=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,related_name='user_register')
 
-# Create your models here.
+# view 
+
+class ramazan_final(models.Model):
+    rotbe = models.IntegerField(primary_key=True)
+    total_amount=models.IntegerField()
+    own_user=models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    Time_period_id=models.ForeignKey(Time_period,on_delete=models.DO_NOTHING,db_column="Time_period_id")
+    period=models.CharField( max_length=50)
+    class Meta:
+        managed = False
+        db_table = 'ramazan_final'
+

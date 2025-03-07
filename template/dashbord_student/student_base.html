@@ -455,12 +455,34 @@
                                 <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
                                     <li class="nav-item">
                                         <a class="nav-link " href="{% url 'enroll:my_class_student' %}">
-                                            <i class="bi-person nav-icon"></i>کلاس های من
+                                            <i class="fas fa-school nav-icon"></i> کلاس های من   
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <span class="text-cap">مسابقات</span>
+
+                                <!-- List -->
+                                <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{% url 'compattions:all_compattions' %}">
+                                            <i class="fas fa-trophy nav-icon"></i>   مسابقات من
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <span class="text-cap">ماه رمضان</span>
+
+                                <!-- List -->
+                                <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{% url 'ramazan:choose_period_student'  %}">
+                                            <i class="fas fa-star nav-icon"></i> امتیازات من
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="{% url 'compattions:all_compattions' %}">
-                                            <i class="fas fa-trophy nav-icon"></i>   مسابقات
+                                        <a class="nav-link " href="{% url 'ramazan:list_ramazan_emtiyaz_student' %}">
+                                            <i class="fas fa-list-ol nav-icon"></i>   لیست امتیازات
                                         </a>
                                     </li>
                                 </ul>

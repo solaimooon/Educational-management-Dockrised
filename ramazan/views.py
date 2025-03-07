@@ -55,7 +55,27 @@ def delete_point(request,id):
         return HttpResponseRedirect(reverse("ramazan:register_point" ,kwargs={"id":request.session["student_id"]}))
 
         
+ # show point to student 
  
+def choose_period_student(request):
+    period=Time_period.objects.all()
+    return render (request,'ramazan/choose_period_ramazan_student.html',{"period":period})
+
+     
+def show_ramazan_point (request,period):
+    try:
+        point=ramazan_final.objects.get(own_user_id=request.user,Time_period_id=period)
+        return render (request,'ramazan/ramazan_show_point.html',{"point":point})
+    except:
+        messages.info(request, "برای شما امتیازی ثبت نشده است")
+        return HttpResponseRedirect(reverse("ramazan:choose_student",kwargs={"pk":request.user.id}))
         
+
+def list_ramazan_emtiyaz_student(request):
+    point=ramazan_final.objects.all()
+    return render (request,'ramazan/ramazan_list_point_student.html',{"points":point})
+
+    
+            
         
     
