@@ -18,5 +18,5 @@ def celected_competions(request,id):
 
 def success_submit(request):
     messages.add_message(request, messages.SUCCESS, "با موفقیت ثبت شد")
-    all_compattions=compattions.objects.all().order_by('creat_at')
+    all_compattions=compattions.objects.all().order_by('-creat_at')
     return render(request,"compattions/index_compattions.html",{"all_compattions":all_compattions})
