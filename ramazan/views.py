@@ -86,5 +86,5 @@ def detail_score (request):
 
 def list_ramazan_emtiyaz_operator(request):
     point=ramazan_final.objects.all()
-    return render (request,'ramazan/ramazan_list_point_student.html',{"points":point})
+    return render (request,'ramazan/ramazan_list_point_operator.html',{"points":point})
     
