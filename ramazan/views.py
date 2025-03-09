@@ -83,4 +83,8 @@ def detail_score (request):
     print("period_id",period_id)
     scores=ramazan_point.objects.filter(own_user=request.user,Time_period__id=period_id)
     return render(request,'ramazan/ramazan_detail_score.html',{"scores":scores})
+
+def list_ramazan_emtiyaz_operator(request):
+    point=ramazan_final.objects.all()
+    return render (request,'ramazan/ramazan_list_point_student.html',{"points":point})
     
