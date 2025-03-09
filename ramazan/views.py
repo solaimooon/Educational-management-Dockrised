@@ -64,6 +64,7 @@ def choose_period_student(request):
      
 def show_ramazan_point (request,period):
     try:
+        request.session["period"]=period
         point=ramazan_final.objects.get(own_user_id=request.user,Time_period_id=period)
         return render (request,'ramazan/ramazan_show_point.html',{"point":point})
     except:
@@ -77,5 +78,9 @@ def list_ramazan_emtiyaz_student(request):
 
     
             
-        
+def detail_score (request):
+    period_id = request.session.get("period")
+    print("period_id",period_id)
+    scores=ramazan_point.objects.filter(own_user=request.user,Time_period__id=period_id)
+    return render(request,'ramazan/ramazan_detail_score.html',{"scores":scores})
     

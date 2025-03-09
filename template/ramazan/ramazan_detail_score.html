@@ -1,0 +1,43 @@
+{% extends 'dashbord_student/student_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-lg-9">
+        <!-- Card -->
+        <div class="card">
+        <!-- Header -->
+        <div class="card-header border-bottom">
+            <h5 class="card-header-title">  جزئیات امتیازات</h5>
+        </div>
+        <!-- End Header -->
+
+        <!-- card -->
+        <div class="card-body">
+            <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">تاریخ و ساعت ثبت</th>
+                        <th scope="col">کاربر ثبت کننده</th>
+                        <th scope="col">نوع</th>
+                        <th scope="col">مقدار</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for score in scores %}  
+                      <tr>
+                        <td>{{score.create_at|date:"Y-m-d H:i"}}</td>
+                        <td>{{score.user_register.last_name}}</td>
+                        <td>{{score.type.name}}</td>
+                        <td >{{score.amount}} </td>
+                      </tr>
+                    {% endfor%}  
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+        <!-- End card -->
+        </div>
+        <!-- End Card -->
+    </div>
+{% endblock %}
