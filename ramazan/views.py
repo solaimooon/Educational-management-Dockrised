@@ -84,7 +84,36 @@ def detail_score (request):
     scores=ramazan_point.objects.filter(own_user=request.user,Time_period__id=period_id)
     return render(request,'ramazan/ramazan_detail_score.html',{"scores":scores})
 
+
+
+from datetime import date
+
 def list_ramazan_emtiyaz_operator(request):
-    point=ramazan_final.objects.all()
-    return render (request,'ramazan/ramazan_list_point_operator.html',{"points":point})
+    points = ramazan_final.objects.prefetch_related("own_user__extra_user_data_set").all()
+
+    # لیست جدید برای ذخیره داده‌ها همراه با سن محاسبه‌شده
+    points_with_age = []
+    
+    # گرفتن تاریخ امروز به شمسی
+    today = jdatetime.date.today()
+
+    for point in points:
+        user_data = point.own_user.extra_user_data_set.first()  # دریافت اولین رکورد extra_user_data
+
+        if user_data and user_data.age:
+            birth_date = user_data.age  # مقدار تاریخ تولد شمسی
+            age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
+        else:
+            age = "نامشخص"
+
+        points_with_age.append({
+            "rotbe": point.rotbe,
+            "name": point.own_user.get_full_name(),
+            "age": age,
+            "total_amount": point.total_amount,
+        })
+
+    return render(request, 'ramazan/ramazan_list_point_operator.html', {"points": points_with_age})
+
+
     

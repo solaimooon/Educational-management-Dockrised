@@ -1,53 +1,52 @@
 {% extends 'dashbord_opratoe/oprator_base.html' %}
 {% load static %}
+
 {% block content %}
     <div class="col-lg-9">
         <!-- Card -->
         <div class="card">
-        <!-- Header -->
-        <div class="card-header border-bottom">
-            <h5 class="card-header-title"> لیست امتیازات  <span class="badge bg-danger text-light" style="font-size: 20px;">
-              {{ student_selected_object.get_full_name}}
-          </span></h5>
-        </div>
-        <!-- End Header -->
-
-        <!-- card -->
-        <div class="card-body">
-            <div class="row">
-                
+            <!-- Header -->
+            <div class="card-header border-bottom">
+                <h5 class="card-header-title"> لیست امتیازات  
+                    <span class="badge bg-danger text-light" style="font-size: 20px;">
+                        {{ student_selected_object.get_full_name }}
+                    </span>
+                </h5>
             </div>
+            <!-- End Header -->
 
-                 {% csrf_token %}
-            <div class='row mt-4'>
-                <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        
-                        <th scope="col text-center "> <span class='text-center'> ردیف</span></th>
-                        <th scope="col text-center">نام</th>
-                        <th scope="col text-center ">مقدار</th>
-                    
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for point in points %}
-                        <tr>
-                          <td class='text-center'>{{ point.rotbe }}</td>
-                          <td class='text-center'>{{point.own_user.get_full_name}}</td>
-                          <td class='text-center'>{{ point.total_amount }}</td>
-                        </tr>
-                      {% endfor %}  
-                    </tbody>
-                  </table>
+            <!-- card -->
+            <div class="card-body">
+                <div class="row">
+                </div>
+
+                {% csrf_token %}
+                <div class='row mt-4'>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">ردیف</th>
+                                <th scope="col" class="text-center">نام</th>
+                                <th scope="col" class="text-center">تولد</th>
+                                <th scope="col" class="text-center">مقدار</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for point in points %}
+                                <tr>
+                                  <td class='text-center'>{{ point.rotbe }}</td>
+                                  <td class='text-center'>{{ point.name }}</td>
+                                  <td class='text-center'>{{ point.age }}</td>
+                                  <td class='text-center'>{{ point.total_amount }}</td>
+                                </tr>
+                            {% endfor %}  
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End Row -->
             </div>
-            <!-- End Row -->
-        </div>
-
-        <!-- End card -->
+            <!-- End card -->
         </div>
         <!-- End Card -->
     </div>
-    <!-- confirmation sweet alert -->
-
 {% endblock %}
