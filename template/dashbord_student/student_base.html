@@ -716,21 +716,38 @@
 </div>
 <!-- ALERT -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {% if messages %}
     <ul class="messages">
         {% for message in messages %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                <script>swal("ناموفق", "{{ message }}", "error");</script>
-            {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS  %}
-                <script>swal("موفق", "{{ message }}", "success");</script>
+                <script>
+                    Swal.fire({
+                        title: "ناموفق",
+                        text: "{{ message }}",
+                        icon: "error"
+                    });
+                </script>
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <script>
+                    Swal.fire({
+                        title: "موفق",
+                        text: "{{ message }}",
+                        icon: "success"
+                    });
+                </script>
             {% else %}
-                <script>swal("", "{{ message }}", "info");</script>
+                <script>
+                    Swal.fire({
+                        text: "{{ message }}",
+                        icon: "info"
+                    });
+                </script>
             {% endif %}
-
         {% endfor %}
     </ul>
 {% endif %}
+
 
 
 <!-- END ALERT -->
