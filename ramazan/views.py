@@ -65,8 +65,10 @@ def choose_period_student(request):
 def show_ramazan_point (request,period):
     try:
         request.session["period"]=period
-        point=ramazan_final.objects.get(own_user_id=request.user,Time_period_id=period)
-        return render (request,'ramazan/ramazan_show_point.html',{"point":point})
+        #point=ramazan_final.objects.get(own_user_id=request.user,Time_period_id=period)
+        #return render (request,'ramazan/ramazan_show_point.html',{"point":point})
+        messages.info(request, "اعلام نتیجه نهایی در جشن اختتامیه")
+        return HttpResponseRedirect(reverse("ramazan:choose_period_student"))
     except:
         messages.info(request, "برای شما امتیازی ثبت نشده است")
         return HttpResponseRedirect(reverse("ramazan:choose_period_student"))
@@ -74,7 +76,9 @@ def show_ramazan_point (request,period):
 
 def list_ramazan_emtiyaz_student(request):
     point=ramazan_final.objects.all()
-    return render (request,'ramazan/ramazan_list_point_student.html',{"points":point})
+    messages.info(request, "اعلام نتیجه نهایی در جشن اختتامیه")
+    return render (request,'dashbord_student/student_index.html',{"points":point})
+    #return render (request,'ramazan/ramazan_list_point_student.html',{"points":point})
 
     
             
