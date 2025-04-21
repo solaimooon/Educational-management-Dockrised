@@ -24,8 +24,9 @@ services:
     
   backend:
     container_name: backend
+    # مسیری که باید دنبال داکر فایل بگرده 
     build: .
-    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn mirasonabi.wsgi --bind 0.0.0.0:8000"
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/backend
       - static_volume:/backend/static_file
