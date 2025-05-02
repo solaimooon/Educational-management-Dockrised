@@ -2,26 +2,7 @@ version: '3'
 
 services:
 
-  db:
-    image: mysql:8.0
-    container_name: db
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    volumes:
-      - mysql_data:/var/lib/mysql
 
-    ports:
-      - "3307:3306"
-    
-    networks:
-      - my_network   
-
-    restart: always
-
-    
   backend:
     container_name: backend
     build: .
@@ -41,39 +22,18 @@ services:
       - ALLOWED_HOSTS=www.kanoonmns.ir,kanoonmns.ir
       - DJANGO_ENV=production
     networks:
-      - my_network
+      - shared_net
     restart: always
 
-    depends_on:
-      - db
 
 
-  nginx:
-    container_name: nginx
-    image: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx_pro.conf:/etc/nginx/nginx.conf
-      - static_volume:/home/backend/static
-      - media_volume:/home/backend/media
 
-    networks:
-      - my_network  
-
-    depends_on:
-      - backend
-      
-    restart:
-      always
-
-    
 
 volumes:
   static_volume:
   media_volume:
-  mysql_data:  # اضافه شده برای MySQL
+
 
 networks:
-  my_network:
-    driver: bridge
+  shared_net:
+    external: true
