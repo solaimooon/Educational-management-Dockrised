@@ -11,8 +11,8 @@ services:
       - .:/backend
       - static_volume:/backend/static_file
       - media_volume:/backend/media
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"  # مپ پورت
     environment:
       - DB_NAME=${MYSQL_DATABASE}
       - DB_USER=${MYSQL_USER}
