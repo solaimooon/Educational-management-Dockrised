@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>کلیپ | {{ clip.name }}</title>
+
+    <!-- Bootstrap 5 RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'website/logo.png' %}">
+
+    <style>
+        /* فونت کلی */
+        body {
+            font-family: 'Vazirmatn', 'IBM Plex Sans Arabic', sans-serif;
+            background-image: url("{% static 'static/back3.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #333;
+        }
+
+        /* نوار بالا شفاف */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* کارت رسانه */
+        .media-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        /* بخش عنوان */
+        .section-title h2 {
+            border-bottom: 4px solid #e63946;
+            padding-bottom: 12px;
+            display: inline-block;
+            font-weight: 800;
+        }
+
+        /* فوتر */
+        footer {
+            background-color: #142a62;
+            color: white;
+            margin-top: auto;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            transition: transform 0.2s;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand fixed-top navbar-dark p-1">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="{% static 'static/logo.png' %}" alt="لوگو" width="50" height="50" class="rounded-circle me-2">
+                <span class="fw-bold text-light">کانون میراث النبی(ص)</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="تغییر منو">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <a class="btn btn-primary rounded-pill py-2 shadow-sm" href="{% url 'athentication:log in' %}">
+                    ورود | ثبت نام
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Image -->
+    <!-- Title -->
+    <div class="section-title text-center mt-6 ">
+        <h2 class=" ">{{ clip.name }}</h2>
+    </div>
+
+    <!-- Media Section -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="media-card shadow-lg">
+                    <video src="{{ clip.file.url }}" poster="{{ clip.image.url }}" controls
+                        class="w-100 rounded-3" style="max-height: 600px; object-fit: contain; background: #000;">
+                        مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="row my-5">
+            <div class="col-12">
+                <div class="info-cards">
+                    <div class="card bg-white rounded-3 shadow-sm mb-3 p-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-secondary fw-semibold">نام اثر</span>
+                            <span class="text-dark fw-bold">{{ clip.name }}</span>
+                        </div>
+                    </div>
+                    <div class="card bg-white rounded-3 shadow-sm mb-3 p-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-secondary fw-semibold"></span>
+                            <span class="text-dark fw-bold">{{ clip.discription }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto">
+        <div class="container pb-1 pb-lg-5">
+            <div class="row content-space-t-2">
+                <!-- تماس با ما -->
+                <div class="col-lg-4">
+                    <h5 class="text-light mt-5 mb-4">تماس با ما :</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="mb-3 mt-3 text-light rounded shadow text-center p-2">
+                                نظارت واحد کوشا (آقای پهلوانی):
+                                <a class="link-light" href="tel:09125453170" style="text-decoration: none;">09125453170</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="mb-3 mt-3 text-light rounded shadow text-center p-2">
+                                نظارت واحد برادران (آقای ساعدی):
+                                <a class="link-light" href="tel:09123965798" style="text-decoration: none;">09123965798</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- شبکه‌های اجتماعی -->
+                <div class="col-sm mb-7">
+                    <h5 class="text-white mt-5 mb-3">شبکه‌های اجتماعی</h5>
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item mx-1">
+                            <a class="btn btn-soft-light btn-sm rounded-circle" href="https://ble.ir/mirasonabi">
+                                <img src="{% static 'sosial media icon/bale.svg' %}" class="social-icon" alt="بله">
+                            </a>
+                        </li>
+                        <li class="list-inline-item mx-1">
+                            <a class="btn btn-soft-light btn-sm rounded-circle" href="https://eitaa.com/vahede_koosha">
+                                <img src="{% static 'sosial media icon/2lSfJCPqMllhHI88YFFavvqI7Of.svg' %}" class="social-icon" alt="ایتا">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="border-white opacity-25 my-7">
+
+            <!-- کپی‌رایت -->
+            <div class="text-center">
+                <p class="text-white-50 small mt-4">
+                    تمامی حقوق برای کانون آموزش معارف اسلامی میراث النبی (ص) محفوظ میباشد.
+                </p>
+                <p class="text-white-50 small">
+                    طراحی و کد نویسی توسط <a href="https://soleymoon.ir" class="text-white">خادم القرآن</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Goftino Chat -->
+    <script type="text/javascript">
+        !function () { var i = "bM56j6", a = window, d = document; function g() { var g = d.createElement("script"), s = "https://www.goftino.com/widget/" + i, l = localStorage.getItem("goftino_" + i); g.async = !0, g.src = l ? s + "?o=" + l : s; d.getElementsByTagName("head")[0].appendChild(g); } "complete" === d.readyState ? g() : a.attachEvent ? a.attachEvent("onload", g) : a.addEventListener("load", g, !1); }();
+    </script>
+
+    <!-- Bootstrap JS + jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

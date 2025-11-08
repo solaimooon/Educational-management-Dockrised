@@ -15,7 +15,8 @@
     <!--import font from google-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Vazirmatn:wght@100..900&display=swap"
+          rel="stylesheet">
     <link rel="icon" href="{% static 'website\logo.png' %}">
     <style>
 
@@ -129,6 +130,64 @@
     </div>
     <!--end button-->
 
+    <section class="container-fluid my-5" dir="rtl">
+        <!-- هدر -->
+        <div class="d-flex justify-content-between align-items-center mb-3 p-2"
+             style="background: linear-gradient(135deg, #007bff 0%, #6610f2 100%); border-radius: 8px; color: #fff;">
+            <h2 class="h5 mb-0" style="font-weight: bold; display: flex; align-items: center;">
+                <i class="fas fa-play-circle" style="margin-left: 8px; font-size: 1.5rem;"></i>
+                آخرین کلیپ‌ها
+            </h2>
+        </div>
+
+        <!-- ریل + دکمه‌ها -->
+        <div class="position-relative">
+            <!-- دکمه سمت راست -->
+            <button class="btn btn-light shadow position-absolute end-0 top-50 translate-middle-y"
+                    style="z-index: 2;" onclick="scrollRail('rail2', 1)">
+                ›
+            </button>
+
+            <!-- دکمه سمت چپ -->
+            <button class="btn btn-light shadow position-absolute start-0 top-50 translate-middle-y"
+                    style="z-index: 2;" onclick="scrollRail('rail2', -1)">
+                ‹
+            </button>
+
+            <!-- ریل کارت‌ها -->
+            <div id="rail2" class="d-flex flex-nowrap overflow-auto pb-2 px-2"
+                 style="scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
+                {% for clip in clips %}
+                    <div class="card shadow-sm rounded overflow-hidden me-3"
+                         style="min-width:280px; scroll-snap-align:start; max-width: 350px;">
+                        <div style="height:180px; overflow:hidden; position:relative;">
+                            <img src="{{ clip.image.url }}"
+                                 style="width:100%; height:100%; object-fit:cover;"
+                                 alt="{{ clip.slug }}">
+                            <span class="badge rounded-pill text-light fw-bold fs-6 position-absolute top-0 start-0 m-2 px-3 py-2"
+                                  style="background-color: #00345b">
+                        <i class="fa fa-video-camera" aria-hidden="true"></i>
+                    </span>
+                        </div>
+                        <div class="card-body p-3">
+                            <h3 class="h6 mt-2 mb-1 text-truncate">{{ clip.name }}</h3>
+{#                            <div class="text-muted small mb-2">#}
+{#                                <i class="fa-solid fa-microphone text-danger ms-1"></i> {{ clip.owner.name }}#}
+{#                            </div>#}
+                            <div class="d-flex justify-content-between mt-3">
+                                <a href="{% url 'website:clip' slug=clip.slug %}"
+                                   class="btn btn-outline-dark rounded-pill text-light"
+                                   style="background-color: #00345b;">
+                                    مشاهده
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
     <!-- about-->
     <section class="py-5">
     <div class="container-fluid mt-5">
@@ -144,7 +203,7 @@
                 </div>
                 <!-- تصویر -->
                 <div class="col-md-6 col-12 order-1 order-md-2 d-flex justify-content-center">
-                    <img src="{% static "static/Lovepik_com-380134727-hand-drawn-cartoon-reading-quran-purple-illustration-stars-quran-islamic.png" %}"
+                    <img src="{% static 'static/Lovepik_com-380134727-hand-drawn-cartoon-reading-quran-purple-illustration-stars-quran-islamic.png' %}"
                          style="width: 350px; height: 350px; "
                          class=" mt-3 mt-lg-0">
                 </div>
@@ -287,7 +346,7 @@
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item mx-0">
                                 <a class="btn btn-soft-light btn-xs btn-icon" href="https://ble.ir/mirasonabi"><img
-                                        src="{% static "sosial media icon/bale.svg" %}"
+                                        src="{% static 'sosial media icon/bale.svg' %}"
                                         style="width: 30px; height: 30px;"></img></a>
                             </li>
                             <li class="list-inline-item mx-0">
